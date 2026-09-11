@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>منجم | اكتشف .. تعلم .. استكشف</title>
+
+<style>
+
+/*BACKGROUNG*/
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+min-height:100vh;
+font-family:"Tajawal",sans-serif;
+background:#fffaef;
+color:#0f3d2e;
+overflow-x:hidden;
+}
+
+button{
+font-family:"Almarai",sans-serif;
+}
+
+/* VARIABLES */
+
+:root{
+--cream:#fffaef;
+--cream-dark:#f2ebdd;
+--green-dark:#0f3d2e;
+--green:#1f6f54;
+--green-soft:#6fa892;
+--gold:#c8b98a;
+--brown:#a88763;
+--orange:#e68b30;
+--blue:#2e5f6e;
+--white:#ffffff;
+}
+
+/* BACKGROUND DESIGN */
+
+.background-design{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+pointer-events:none;
+overflow:hidden;
+background:
+radial-gradient(circle at 10% 15%,rgba(111,168,146,.16),transparent 25%),
+radial-gradient(circle at 90% 85%,rgba(200,185,138,.18),transparent 28%),
+#fffaef;
+}
+
+.polygon{
+position:absolute;
+border-radius:40px;
+filter:blur(.2px);
+}
+
+.p1{
+top:-100px;
+right:-90px;
+width:360px;
+height:360px;
+background:rgba(111,168,146,.16);
+clip-path:polygon(
+30% 0%,
+100% 0%,
+100% 70%,
+65% 100%,
+0% 45%
+);
+transform:rotate(8deg);
+}
+
+.p2{
+top:20%;
+left:-150px;
+width:330px;
+height:330px;
+background:rgba(200,185,138,.15);
+clip-path:polygon(
+0% 20%,
+70% 0%,
+100% 65%,
+35% 100%
+);
+transform:rotate(-12deg);
+}
+
+.p3{
+bottom:-130px;
+left:15%;
+width:350px;
+height:350px;
+background:rgba(111,168,146,.11);
+clip-path:polygon(
+20% 0%,
+100% 35%,
+75% 100%,
+0% 70%
+);
+}
+
+.p4{
+bottom:-120px;
+right:-80px;
+width:330px;
+height:330px;
+background:rgba(200,185,138,.13);
+clip-path:polygon(
+0% 30%,
+55% 0%,
+100% 45%,
+70% 100%,
+15% 80%
+);
+}
+
+/* TOPOGRAPHIC LINES */
+
+.topographic-lines{
+position:absolute;
+width:700px;
+height:700px;
+border:1px solid rgba(15,61,46,.07);
+border-radius:48% 52% 55% 45%;
+transform:rotate(-18deg);
+}
+
+.line1{
+top:-280px;
+left:-180px;
+}
+
+.line2{
+top:-245px;
+left:-145px;
+transform:rotate(-18deg) scale(.88);
+}
+
+.line3{
+top:-210px;
+left:-110px;
+transform:rotate(-18deg) scale(.76);
+}
+
+.line4{
+bottom:-300px;
+right:-180px;
+transform:rotate(28deg);
+}
+
+.line5{
+bottom:-265px;
+right:-145px;
+transform:rotate(28deg) scale(.88);
+}
+
+.line6{
+bottom:-230px;
+right:-110px;
+transform:rotate(28deg) scale(.76);
+}
+
+/* SMALL DOTS */
+
+.dots-pattern{
+position:absolute;
+top:14%;
+right:7%;
+width:90px;
+height:90px;
+background-image:radial-gradient(
+rgba(15,61,46,.12) 1.5px,
+transparent 1.5px
+);
+background-size:15px 15px;
+opacity:.45;
+}
+
+/* PAGE */
+
+.page{
+width:100%;
+min-height:100vh;
+padding:45px 6vw 60px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* INTRO */
+
+.intro{
+width:100%;
+max-width:1100px;
+text-align:center;
+margin-bottom:45px;
+}
+
+.intro-label{
+display:inline-flex;
+align-items:center;
+gap:9px;
+padding:8px 17px;
+border:1px solid rgba(31,111,84,.15);
+border-radius:50px;
+background:rgba(255,255,255,.6);
+color:var(--green);
+font-family:"Almarai",sans-serif;
+font-size:12px;
+font-weight:700;
+letter-spacing:.2px;
+margin-bottom:20px;
+box-shadow:0 5px 20px rgba(15,61,46,.04);
+}
+
+.intro-label i{
+font-size:11px;
+color:var(--orange);
+}
+
+.intro h1{
+font-family:"Almarai",sans-serif;
+font-size:clamp(32px,5vw,58px);
+font-weight:800;
+line-height:1.2;
+color:var(--green-dark);
+margin-bottom:14px;
+}
+
+.intro h1 span{
+color:var(--green);
+}
+
+.intro p{
+max-width:620px;
+margin:auto;
+font-size:clamp(14px,1.5vw,17px);
+line-height:1.9;
+color:rgba(15,61,46,.65);
+}
+
+/* CATEGORY GRID */
+
+.categories{
+width:100%;
+max-width:1150px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+/* CATEGORY CARD */
+
+.category-card{
+position:relative;
+height:300px;
+border-radius:30px;
+overflow:hidden;
+cursor:pointer;
+background:var(--white);
+border:1px solid rgba(15,61,46,.08);
+box-shadow:
+0 15px 35px rgba(15,61,46,.07),
+0 3px 10px rgba(15,61,46,.04);
+transition:
+transform .45s ease,
+box-shadow .45s ease,
+border-color .45s ease;
+}
+
+.category-card:hover{
+transform:translateY(-8px);
+box-shadow:
+0 25px 45px rgba(15,61,46,.12),
+0 8px 18px rgba(15,61,46,.06);
+border-color:rgba(31,111,84,.18);
+}
+
+/* CARD GEOLOGICAL IMAGE */
+
+.card-image{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+transition:
+transform .7s ease,
+filter .7s ease;
+}
+
+.category-card:hover .card-image{
+transform:scale(1.07);
+filter:saturate(1.08);
+}
+
+/* CARD IMAGES */
+
+.card-1 .card-image{
+background:
+linear-gradient(135deg,rgba(46,95,110,.35),rgba(111,168,146,.25)),
+radial-gradient(circle at 20% 25%,#6fa892 0 12%,transparent 13%),
+radial-gradient(circle at 75% 70%,#a88763 0 18%,transparent 19%),
+linear-gradient(145deg,#d9d0b9,#6fa892);
+}
+
+.card-2 .card-image{
+background:
+linear-gradient(145deg,rgba(200,185,138,.3),rgba(31,111,84,.25)),
+radial-gradient(ellipse at 30% 30%,#c8b98a 0 15%,transparent 16%),
+radial-gradient(ellipse at 70% 65%,#6fa892 0 20%,transparent 21%),
+linear-gradient(125deg,#f2ebdd,#6fa892);
+}
+
+.card-3 .card-image{
+background:
+linear-gradient(135deg,rgba(15,61,46,.3),rgba(230,139,48,.2)),
+radial-gradient(circle at 65% 25%,#e68b30 0 12%,transparent 13%),
+radial-gradient(circle at 25% 75%,#2e5f6e 0 20%,transparent 21%),
+linear-gradient(145deg,#a88763,#6fa892);
+}
+
+.card-4 .card-image{
+background:
+linear-gradient(145deg,rgba(111,168,146,.28),rgba(200,185,138,.25)),
+radial-gradient(circle at 30% 25%,#f2ebdd 0 15%,transparent 16%),
+radial-gradient(circle at 75% 70%,#a88763 0 17%,transparent 18%),
+linear-gradient(135deg,#6fa892,#c8b98a);
+}
+
+.card-5 .card-image{
+background:
+linear-gradient(135deg,rgba(46,95,110,.28),rgba(111,168,146,.25)),
+radial-gradient(circle at 70% 25%,#2e5f6e 0 15%,transparent 16%),
+radial-gradient(circle at 25% 70%,#76b272 0 21%,transparent 22%),
+linear-gradient(145deg,#dce9df,#6fa892);
+}
+
+.card-6 .card-image{
+background:
+linear-gradient(145deg,rgba(15,61,46,.25),rgba(200,185,138,.28)),
+radial-gradient(circle at 25% 30%,#e68b30 0 11%,transparent 12%),
+radial-gradient(circle at 75% 70%,#c8b98a 0 21%,transparent 22%),
+linear-gradient(135deg,#f2ebdd,#a88763);
+}
+
+/* CARD COVER */
+
+.card-cover{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+180deg,
+rgba(15,61,46,.04) 0%,
+rgba(15,61,46,.16) 45%,
+rgba(15,61,46,.55) 100%
+);
+transition:
+background .45s ease;
+}
+
+.category-card:hover .card-cover{
+background:
+linear-gradient(
+180deg,
+rgba(15,61,46,.02) 0%,
+rgba(15,61,46,.12) 45%,
+rgba(15,61,46,.48) 100%
+);
+}
+
+/* GEOLOGICAL SHAPES */
+
+.geo-shape{
+position:absolute;
+width:170px;
+height:170px;
+border:1px solid rgba(255,255,255,.28);
+border-radius:50%;
+top:-60px;
+right:-45px;
+transition:
+transform .6s ease,
+opacity .6s ease;
+}
+
+.geo-shape::before,
+.geo-shape::after{
+content:"";
+position:absolute;
+border:1px solid rgba(255,255,255,.2);
+border-radius:50%;
+inset:20px;
+}
+
+.geo-shape::after{
+inset:42px;
+}
+
+.category-card:hover .geo-shape{
+transform:rotate(25deg) scale(1.08);
+opacity:.8;
+}
+
+/* CARD CONTENT */
+
+.card-content{
+position:absolute;
+inset:0;
+z-index:2;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:30px;
+text-align:center;
+color:white;
+}
+
+.card-icon{
+width:66px;
+height:66px;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,.18);
+border:1px solid rgba(255,255,255,.35);
+backdrop-filter:blur(8px);
+font-size:25px;
+margin-bottom:18px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+transition:
+transform .45s ease,
+background .45s ease;
+}
+
+.category-card:hover .card-icon{
+transform:translateY(-5px) rotate(-3deg);
+background:rgba(255,255,255,.25);
+}
+
+.card-content h2{
+font-family:"Almarai",sans-serif;
+font-size:clamp(19px,2vw,25px);
+font-weight:800;
+line-height:1.5;
+text-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.card-content p{
+margin-top:8px;
+font-size:13px;
+color:rgba(255,255,255,.86);
+opacity:.9;
+}
+
+/* CARD ARROW */
+
+.card-arrow{
+position:absolute;
+bottom:22px;
+left:24px;
+width:38px;
+height:38px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,.17);
+border:1px solid rgba(255,255,255,.25);
+font-size:13px;
+transition:
+transform .4s ease,
+background .4s ease;
+}
+
+.category-card:hover .card-arrow{
+transform:translateX(-5px);
+background:rgba(255,255,255,.27);
+}
+
+/* SELECTED CARD */
+
+.category-card.selected{
+transform:scale(.98);
+box-shadow:
+0 0 0 3px rgba(31,111,84,.18),
+0 20px 40px rgba(15,61,46,.12);
+}
+
+.category-card.selected .card-cover{
+background:
+linear-gradient(
+180deg,
+rgba(31,111,84,.08),
+rgba(15,61,46,.65)
+);
+}
+
+/* FOOTER NOTE */
+
+.page-note{
+margin-top:34px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+font-size:12px;
+color:rgba(15,61,46,.48);
+}
+
+.page-note i{
+font-size:10px;
+color:var(--orange);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.page{
+padding:38px 5vw 50px;
+}
+
+.categories{
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+}
+
+.category-card{
+height:280px;
+}
+
+.intro{
+margin-bottom:34px;
+}
+
+}
+
+@media(max-width:600px){
+
+.page{
+padding:30px 18px 40px;
+}
+
+.intro{
+margin-bottom:28px;
+}
+
+.intro-label{
+font-size:10px;
+padding:7px 13px;
+}
+
+.intro h1{
+font-size:34px;
+}
+
+.intro p{
+font-size:13px;
+line-height:1.8;
+}
+
+.categories{
+grid-template-columns:1fr;
+gap:16px;
+}
+
+.category-card{
+height:260px;
+border-radius:25px;
+}
+
+.card-icon{
+width:58px;
+height:58px;
+font-size:22px;
+border-radius:17px;
+margin-bottom:14px;
+}
+
+.card-content h2{
+font-size:21px;
+}
+
+.card-content p{
+font-size:12px;
+}
+
+.dots-pattern{
+right:4%;
+top:10%;
+transform:scale(.7);
+}
+
+}
+
+@media(max-width:380px){
+
+.page{
+padding-left:14px;
+padding-right:14px;
+}
+
+.category-card{
+height:235px;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-icon{
+width:52px;
+height:52px;
+font-size:19px;
+margin-bottom:11px;
+}
+
+.card-content h2{
+font-size:19px;
+}
+
+}
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+
+*{
+scroll-behavior:auto!important;
+transition:none!important;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background-design">
+
+<div class="polygon p1"></div>
+<div class="polygon p2"></div>
+<div class="polygon p3"></div>
+<div class="polygon p4"></div>
+
+<div class="topographic-lines line1"></div>
+<div class="topographic-lines line2"></div>
+<div class="topographic-lines line3"></div>
+
+<div class="topographic-lines line4"></div>
+<div class="topographic-lines line5"></div>
+<div class="topographic-lines line6"></div>
+
+<div class="dots-pattern"></div>
+
+</div>
+
+
+<!-- PAGE -->
+
+<main class="page">
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+<div class="intro-label">
+<i class="fa-solid fa-layer-group"></i>
+مساحة المعرفة الجيولوجية
+</div>
+
+<h1>
+اكتشف .. تعلم .. <span>استكشف</span>
+</h1>
+
+<p>
+اختر المجال الذي ترغب في استكشافه وابدأ رحلتك بين المعرفة الجيولوجية والمهارات والتجارب.
+</p>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+
+<!-- CATEGORY 1 -->
+
+<article class="category-card card-1"
+data-category="العلوم الجيولوجية"
+onclick="selectCategory(this)">
+
+<div class="card-image"></div>
+
+<div class="card-cover"></div>
+
+<div class="geo-shape"></div>
+
+<div class="card-content">
+
+<div class="card-icon">
+<i class="fa-solid fa-mountain"></i>
+</div>
+
+<h2>العلوم الجيولوجية</h2>
+
+<p>استكشف أساسيات وعلوم الأرض</p>
+
+</div>
+
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+
+</article>
+
+
+<!-- CATEGORY 2 -->
+
+<article class="category-card card-2"
+data-category="الميدان والرحلات"
+onclick="selectCategory(this)">
+
+<div class="card-image"></div>
+
+<div class="card-cover"></div>
+
+<div class="geo-shape"></div>
+
+<div class="card-content">
+
+<div class="card-icon">
+<i class="fa-solid fa-compass"></i>
+</div>
+
+<h2>الميدان والرحلات</h2>
+
+<p>من المعرفة إلى التجربة الميدانية</p>
+
+</div>
+
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+
+</article>
+
+
+<!-- CATEGORY 3 -->
+
+<article class="category-card card-3"
+data-category="المجال المهني"
+onclick="selectCategory(this)">
+
+<div class="card-image"></div>
+
+<div class="card-cover"></div>
+
+<div class="geo-shape"></div>
+
+<div class="card-content">
+
+<div class="card-icon">
+<i class="fa-solid fa-helmet-safety"></i>
+</div>
+
+<h2>المجال المهني</h2>
+
+<p>تعرف على عالم العمل الجيولوجي</p>
+
+</div>
+
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+
+</article>
+
+
+<!-- CATEGORY 4 -->
+
+<article class="category-card card-4"
+data-category="المهارات والتطوير"
+onclick="selectCategory(this)">
+
+<div class="card-image"></div>
+
+<div class="card-cover"></div>
+
+<div class="geo-shape"></div>
+
+<div class="card-content">
+
+<div class="card-icon">
+<i class="fa-solid fa-lightbulb"></i>
+</div>
+
+<h2>المهارات والتطوير</h2>
+
+<p>طوّر أدواتك ومهاراتك</p>
+
+</div>
+
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+
+</article>
+
+
+<!-- CATEGORY 5 -->
+
+<article class="category-card card-5"
+data-category="المجتمع والبيئة"
+onclick="selectCategory(this)">
+
+<div class="card-image"></div>
+
+<div class="card-cover"></div>
+
+<div class="geo-shape"></div>
+
+<div class="card-content">
+
+<div class="card-icon">
+<i class="fa-solid fa-earth-americas"></i>
+</div>
+
+<h2>المجتمع والبيئة</h2>
+
+<p>الجيولوجيا من أجل مجتمع مستدام</p>
+
+</div>
+
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+
+</article>
+
+
+<!-- CATEGORY 6 -->
+
+<article class="category-card card-6"
+data-category="المجتمع والتواصل"
+onclick="selectCategory(this)">
+
+<div class="card-image"></div>
+
+<div class="card-cover"></div>
+
+<div class="geo-shape"></div>
+
+<div class="card-content">
+
+<div class="card-icon">
+<i class="fa-solid fa-people-group"></i>
+</div>
+
+<h2>المجتمع والتواصل</h2>
+
+<p>تواصل .. شارك .. اصنع أثرًا</p>
+
+</div>
+
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+
+</article>
+
+
+</section>
+
+
+<!-- PAGE NOTE -->
+
+<div class="page-note">
+
+<i class="fa-solid fa-circle"></i>
+
+اختر أحد المجالات للبدء
+
+</div>
+
+
+</main>
+
+
+<!-- SCRIPTS -->
+
+<script>
+
+function selectCategory(card){
+
+document.querySelectorAll(".category-card").forEach(function(item){
+item.classList.remove("selected");
+});
+
+card.classList.add("selected");
+
+let category=card.getAttribute("data-category");
+
+sessionStorage.setItem("selectedCategory",category);
+
+if(category==="العلوم الجيولوجية"){
+window.location.href="CARDS/CARDS1.html";
+}
+
+if(category==="الميدان والرحلات"){
+window.location.href="CARDS/CARDS2.html";
+}
+
+if(category==="المجال المهني"){
+window.location.href="CARDS/CARDS3.html";
+}
+
+if(category==="المهارات والتطوير"){
+window.location.href="CARDS/CARDS4.html";
+}
+
+if(category==="المجتمع والبيئة"){
+window.location.href="CARDS/CARDS5.html";
+}
+
+if(category==="المجتمع والتواصل"){
+window.location.href="CARDS/CARDS6.html";
+}
+}
+</script>
+
+</body>
+
+</html>
