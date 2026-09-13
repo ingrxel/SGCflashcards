@@ -1083,6 +1083,7 @@ font-size:11px;
 
 @media(max-width:600px){
 
+  /* نوقف قلب الـ3D على الجوال */
   .flash-card .card-inner{
     transform:none !important;
     -webkit-transform:none !important;
@@ -1091,44 +1092,26 @@ font-size:11px;
 
   /* الوجه الأمامي */
   .flash-card .card-front{
+    display:block;
     transform:none !important;
     -webkit-transform:none !important;
-    opacity:1;
-    visibility:visible;
-    z-index:2;
-    transition:
-      opacity .25s ease,
-      visibility 0s linear 0s;
   }
-  /* الوجه الخلفي */
+
+  /* الوجه الخلفي مخفي بالكامل */
   .flash-card .card-back{
+    display:none;
     transform:none !important;
     -webkit-transform:none !important;
-    opacity:0;
-    visibility:hidden;
-    z-index:1;
-    transition:
-      opacity .25s ease,
-      visibility 0s linear .25s;
   }
 
-  /* بعد القلب */
+  /* بعد الضغط: نخفي الأمامي */
   .flash-card.flipped .card-front{
-    opacity:0;
-    visibility:hidden;
-    z-index:1;
-    transition:
-      opacity .25s ease,
-      visibility 0s linear .25s;
+    display:none;
   }
 
+  /* ونظهر الخلفي فقط */
   .flash-card.flipped .card-back{
-    opacity:1;
-    visibility:visible;
-    z-index:2;
-    transition:
-      opacity .25s ease,
-      visibility 0s linear 0s;
+    display:flex;
   }
 
 }/* ========================================
