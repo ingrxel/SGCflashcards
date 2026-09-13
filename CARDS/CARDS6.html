@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>بطاقات ال</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-
 <style>
-
 :root{
 --cream:#fffaef;
 --cream-dark:#f2ebdd;
@@ -611,110 +604,27 @@ height:330px;
 }
 }
 @media(max-width:600px){
-.page{
-padding:25px 5vw 45px;
+.page{padding:25px 5vw 45px;}
+.top-controls{margin-bottom:25px;}
+.cards-grid{grid-template-columns:1fr;gap:18px;}
+.flash-card{height:340px;perspective:none;-webkit-perspective:none;}
+.flash-card:hover{transform:none;}
+.card-inner{position:relative !important;transform:none !important;-webkit-transform:none !important;transform-style:flat !important;-webkit-transform-style:flat !important;transition:none !important;}
+.card-face{position:absolute;inset:0;transform:none !important;-webkit-transform:none !important;backface-visibility:visible !important;-webkit-backface-visibility:visible !important;}
+.card-front{display:block !important;z-index:2;opacity:1 !important;visibility:visible !important;pointer-events:auto;}
+.card-back{display:none !important;z-index:1;opacity:1 !important;visibility:visible !important;pointer-events:none;transform:none !important;-webkit-transform:none !important;}
+.flash-card.mobile-answer .card-inner{transform:none !important;-webkit-transform:none !important;}
+.flash-card.mobile-answer .card-front{display:none !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important;}
+.flash-card.mobile-answer .card-back{display:flex !important;opacity:1 !important;visibility:visible !important;pointer-events:auto !important;transform:none !important;-webkit-transform:none !important;}
+.flash-card.mobile-answer .done-button{pointer-events:auto !important;z-index:99999 !important;}
+.intro{margin-bottom:30px;}
+.flash-card.focused{width:88vw;height:78vh;}
+.flash-card.focused:hover{transform:translate(-50%,-50%) !important;}
+.back-btn,.reset-btn{padding:10px 14px;font-size:11px;}
 }
-@media(max-width:600px){
-.card-inner{
-position:relative;
-isolation:isolate !important;
-}
-.card-inner::before{
-content:"";
-position:absolute;
-inset:0;
-z-index:3;
-background:var(--green-dark);
-border-radius:28px;
-pointer-events:none;
-display:none;
-}
-.flash-card.flipped .card-inner::before{
-display:block;
-}
-.flash-card.flipped .card-back{
-z-index:4 !important;
-}
-.flash-card.flipped .card-front{
-z-index:1 !important;
-}
-}
-.top-controls{
-margin-bottom:25px;
-}
-.cards-grid{
-grid-template-columns:1fr;
-gap:18px;
-}
-.flash-card{
-height:340px;
-perspective:none;
--webkit-perspective:none;
-}
-.flash-card:hover{
-transform:none;
-}
-.card-inner{
-transform:none !important;
--webkit-transform:none !important;
-transform-style:flat !important;
--webkit-transform-style:flat !important;
-transition:none !important;
-}
-.card-face{
-position:absolute;
-inset:0;
-transform:none !important;
--webkit-transform:none !important;
-backface-visibility:visible !important;
--webkit-backface-visibility:visible !important;
-transition:opacity .2s ease,visibility .2s ease;
-}
-.card-front{
-z-index:2;
-opacity:1;
-visibility:visible;
-pointer-events:auto;
-}
-.card-back{
-z-index:1;
-opacity:0;
-visibility:hidden;
-pointer-events:none;
-}
-.flash-card.flipped .card-front{
-z-index:1;
-opacity:0;
-visibility:hidden;
-pointer-events:none;
-}
-.flash-card.flipped .card-back{
-z-index:2;
-opacity:1;
-visibility:visible;
-pointer-events:auto;
-}
-.intro{
-margin-bottom:30px;
-}
-.flash-card.focused{
-width:88vw;
-height:78vh;
-}
-.flash-card.focused:hover{
-transform:translate(-50%,-50%) !important;
-}
-.back-btn,.reset-btn{
-padding:10px 14px;
-font-size:11px;
-}
-}
-
 </style>
 </head>
-
 <body>
-
 <div class="background-design">
 <div class="polygon p1"></div>
 <div class="polygon p2"></div>
@@ -951,7 +861,6 @@ font-size:11px;
 <div class="answer-icon">
 <i class="fa-solid fa-route"></i>
 </div>
-
 <h3>#عنوان الإجابة#</h3>
 <p>#اكتب المحتوى هنا#</p>
 <button type="button" class="done-button">تم</button>
@@ -1003,12 +912,9 @@ font-size:11px;
 </article>
 </section>
 </main>
-
-
 <!-- ========================================
-   JAVASCRIPT
+JAVASCRIPT
 ======================================== -->
-
 <script>
 const cards=document.querySelectorAll(".flash-card");
 const overlay=document.getElementById("focusOverlay");
@@ -1016,30 +922,13 @@ const resetButton=document.getElementById("resetButton");
 const backButton=document.getElementById("backButton");
 const STORAGE_KEY="cards6CompletedCards";
 let completedCards=JSON.parse(localStorage.getItem(STORAGE_KEY))||[];
-function isMobile(){
-return window.innerWidth<=600;
-}
-function showMobileBack(card){
-const front=card.querySelector(".card-front");
-const back=card.querySelector(".card-back");
-if(!front||!back)return;
-front.style.display="none";
-back.style.display="flex";
-}
-function showMobileFront(card){
-const front=card.querySelector(".card-front");
-const back=card.querySelector(".card-back");
-if(!front||!back)return;
-front.style.display="block";
-back.style.display="none";
-}
+function isMobile(){return window.innerWidth<=600;}
 function openCard(card){
 if(!card)return;
 if(card.classList.contains("completed"))return;
 if(card.classList.contains("focused"))return;
 if(isMobile()){
-showMobileBack(card);
-card.classList.add("focused");
+card.classList.add("mobile-answer","focused");
 overlay.classList.add("active");
 document.body.style.overflow="hidden";
 return;
@@ -1063,14 +952,10 @@ card.classList.remove("focused");
 overlay.classList.remove("active");
 document.body.style.overflow="";
 if(isMobile()){
-showMobileBack(card);
-}else{
-setTimeout(function(){
-card.classList.add("completed");
-},450);
+card.classList.add("mobile-answer","completed");
 return;
 }
-card.classList.add("completed");
+setTimeout(function(){card.classList.add("completed");},450);
 }
 cards.forEach(function(card){
 card.addEventListener("click",function(event){
@@ -1090,45 +975,20 @@ if(card)completeCard(card);
 function resetCards(){
 completedCards=[];
 localStorage.removeItem(STORAGE_KEY);
-cards.forEach(function(card){
-card.classList.remove("completed","focused","flipped");
-if(isMobile()){
-showMobileFront(card);
-}else{
-const front=card.querySelector(".card-front");
-const back=card.querySelector(".card-back");
-if(front)front.style.display="";
-if(back)back.style.display="";
-}
-});
+cards.forEach(function(card){card.classList.remove("completed","focused","flipped","mobile-answer");});
 overlay.classList.remove("active");
 document.body.style.overflow="";
 }
-function goBack(){
-window.location.href="../index.html";
-}
-resetButton.addEventListener("click",function(event){
-event.preventDefault();
-event.stopPropagation();
-resetCards();
-});
-backButton.addEventListener("click",function(event){
-event.preventDefault();
-event.stopPropagation();
-goBack();
-});
+function goBack(){window.location.href="../index.html";}
+resetButton.addEventListener("click",function(event){event.preventDefault();event.stopPropagation();resetCards();});
+backButton.addEventListener("click",function(event){event.preventDefault();event.stopPropagation();goBack();});
 function restoreCompletedCards(){
 cards.forEach(function(card){
 const index=Number(card.dataset.index);
 if(completedCards.includes(index)){
 card.classList.add("completed");
-if(isMobile()){
-showMobileBack(card);
-}else{
-card.classList.add("flipped");
-}
-}else if(isMobile()){
-showMobileFront(card);
+if(isMobile())card.classList.add("mobile-answer");
+else card.classList.add("flipped");
 }
 });
 }
