@@ -615,11 +615,20 @@ height:330px;
 padding:25px 5vw 45px;
 }
 @media(max-width:600px){
-.flash-card.flipped .card-front{
+.flash-card.mobile-flipped .card-front{
 display:none !important;
+opacity:0 !important;
+visibility:hidden !important;
+pointer-events:none !important;
 }
-.flash-card.flipped .card-back{
+.flash-card.mobile-flipped .card-back{
 display:flex !important;
+opacity:1 !important;
+visibility:visible !important;
+pointer-events:auto !important;
+z-index:10 !important;
+transform:none !important;
+-webkit-transform:none !important;
 }
 }
 .top-controls{
@@ -1000,10 +1009,19 @@ const resetButton=document.getElementById("resetButton");
 const backButton=document.getElementById("backButton");
 const STORAGE_KEY="cards6CompletedCards";
 let completedCards=JSON.parse(localStorage.getItem(STORAGE_KEY))||[];
+const isMobile=window.matchMedia("(max-width:600px)");
 function openCard(card){
 if(!card)return;
 if(card.classList.contains("completed"))return;
 if(card.classList.contains("focused"))return;
+if(isMobile.matches){
+card.classList.add("mobile-flipped");
+card.classList.add("flipped");
+card.classList.add("focused");
+overlay.classList.add("active");
+document.body.style.overflow="hidden";
+return;
+}
 card.classList.add("flipped");
 setTimeout(function(){
 if(card.classList.contains("completed"))return;
@@ -1022,6 +1040,9 @@ localStorage.setItem(STORAGE_KEY,JSON.stringify(completedCards));
 card.classList.remove("focused");
 overlay.classList.remove("active");
 document.body.style.overflow="";
+if(isMobile.matches){
+card.classList.remove("mobile-flipped");
+}
 setTimeout(function(){
 card.classList.add("completed");
 },450);
@@ -1032,26 +1053,19 @@ if(event.target.closest(".done-button"))return;
 openCard(card);
 },false);
 });
-document.addEventListener("click",function(event){
-const button=event.target.closest(".done-button");
-if(!button)return;
+doneButtons.forEach(function(button){
+button.addEventListener("click",function(event){
 event.preventDefault();
 event.stopPropagation();
-event.stopImmediatePropagation();
 const card=button.closest(".flash-card");
-if(!card)return;
 completeCard(card);
-},true);
-document.addEventListener("pointerdown",function(event){
-const button=event.target.closest(".done-button");
-if(!button)return;
-event.stopPropagation();
-},true);
+},false);
+});
 function resetCards(){
 completedCards=[];
 localStorage.removeItem(STORAGE_KEY);
 cards.forEach(function(card){
-card.classList.remove("completed","focused","flipped");
+card.classList.remove("completed","focused","flipped","mobile-flipped");
 });
 overlay.classList.remove("active");
 document.body.style.overflow="";
@@ -1075,6 +1089,9 @@ const index=Number(card.dataset.index);
 if(completedCards.includes(index)){
 card.classList.add("flipped");
 card.classList.add("completed");
+if(isMobile.matches){
+card.classList.add("mobile-flipped");
+}
 }
 });
 }
