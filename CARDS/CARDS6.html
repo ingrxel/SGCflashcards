@@ -614,7 +614,31 @@ height:330px;
 .page{
 padding:25px 5vw 45px;
 }
-
+@media(max-width:600px){
+.card-inner{
+position:relative;
+isolation:isolate !important;
+}
+.card-inner::before{
+content:"";
+position:absolute;
+inset:0;
+z-index:3;
+background:var(--green-dark);
+border-radius:28px;
+pointer-events:none;
+display:none;
+}
+.flash-card.flipped .card-inner::before{
+display:block;
+}
+.flash-card.flipped .card-back{
+z-index:4 !important;
+}
+.flash-card.flipped .card-front{
+z-index:1 !important;
+}
+}
 .top-controls{
 margin-bottom:25px;
 }
