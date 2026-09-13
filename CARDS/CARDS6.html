@@ -1015,59 +1015,43 @@ box-shadow:
 rgba(0,0,0,.12);
 pointer-events:none;
 }
-
-
 /* ========================================
-   RESPONSIVE
+RESPONSIVE
 ======================================== */
-
 @media(max-width:900px){
-
 .cards-grid{
 grid-template-columns:
 repeat(2,1fr);
-
 gap:20px;
 }
-
 .flash-card{
 height:330px;
 }
-
 }
-
-
 @media(max-width:600px){
-
 .page{
 padding:
 25px
 5vw
 45px;
 }
-
 .top-controls{
 margin-bottom:25px;
 }
-
 .cards-grid{
 grid-template-columns:1fr;
 gap:18px;
 }
-
 .flash-card{
 height:340px;
 }
-
 .intro{
 margin-bottom:30px;
 }
-
 .flash-card.focused{
 width:88vw;
 height:78vh;
 }
-
 .back-btn,
 .reset-btn{
 padding:
@@ -1075,46 +1059,44 @@ padding:
 14px;
 font-size:11px;
 }
-
 }
 /* ========================================
-   MOBILE CARD FLIP FIX
+MOBILE CARD FLIP FIX
 ======================================== */
-
 @media(max-width:600px){
+.flash-card .card-inner{
+transform:none !important;
+-webkit-transform:none !important;
+transform-style:flat !important;
+-webkit-transform-style:flat !important;
+transition:none !important;
+}
+.flash-card .card-front{
+display:block !important;
+transform:none !important;
+-webkit-transform:none !important;
+opacity:1 !important;
+visibility:visible !important;
+}
+.flash-card .card-back{
+display:none !important;
+transform:none !important;
+-webkit-transform:none !important;
+opacity:0 !important;
+visibility:hidden !important;
+}
+.flash-card.flipped .card-front{
+display:none !important;
+opacity:0 !important;
+visibility:hidden !important;
+}
+.flash-card.flipped .card-back{
+display:flex !important;
+opacity:1 !important;
+visibility:visible !important;
+}
 
-  /* نوقف قلب الـ3D على الجوال */
-  .flash-card .card-inner{
-    transform:none !important;
-    -webkit-transform:none !important;
-    transition:none !important;
-  }
-
-  /* الوجه الأمامي */
-  .flash-card .card-front{
-    display:block;
-    transform:none !important;
-    -webkit-transform:none !important;
-  }
-
-  /* الوجه الخلفي مخفي بالكامل */
-  .flash-card .card-back{
-    display:none;
-    transform:none !important;
-    -webkit-transform:none !important;
-  }
-
-  /* بعد الضغط: نخفي الأمامي */
-  .flash-card.flipped .card-front{
-    display:none;
-  }
-
-  /* ونظهر الخلفي فقط */
-  .flash-card.flipped .card-back{
-    display:flex;
-  }
-
-}/* ========================================
+/* ========================================
    IMPORTANT CLICK LAYERS
 ======================================== */
 
