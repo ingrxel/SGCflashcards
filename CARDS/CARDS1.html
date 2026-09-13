@@ -1076,7 +1076,50 @@ font-size:11px;
 }
 
 }
+/* ========================================
+   MOBILE CARD FLIP FIX
+======================================== */
 
+@media(max-width:600px){
+
+  .flash-card .card-inner{
+    transform:none !important;
+    -webkit-transform:none !important;
+    transition:none;
+  }
+
+  .flash-card .card-front{
+    opacity:1;
+    transform:scaleX(1);
+    transition:
+      opacity .35s ease,
+      transform .35s ease;
+  }
+
+  .flash-card .card-back{
+    transform:none !important;
+    -webkit-transform:none !important;
+    opacity:0;
+    visibility:hidden;
+    transition:
+      opacity .35s ease,
+      transform .35s ease,
+      visibility .35s ease;
+  }
+
+  .flash-card.flipped .card-front{
+    opacity:0;
+    transform:scaleX(.85);
+  }
+
+  .flash-card.flipped .card-back{
+    opacity:1;
+    visibility:visible;
+    transform:scaleX(1) !important;
+    -webkit-transform:scaleX(1) !important;
+  }
+
+}
 
 /* ========================================
    IMPORTANT CLICK LAYERS
