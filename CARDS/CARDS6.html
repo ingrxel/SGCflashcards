@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بطاقات ال</title>
+<title>بطاقات تحدي الصور</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
@@ -467,7 +467,7 @@ margin-bottom:12px;
 pointer-events:none;
 }
 .answer-content p{
-font-size:13px;
+font-size:35px;
 line-height:1.9;
 color:rgba(255,255,255,.84);
 max-width:480px;
@@ -622,6 +622,153 @@ height:330px;
 .flash-card.focused:hover{transform:translate(-50%,-50%) !important;}
 .back-btn,.reset-btn{padding:10px 14px;font-size:11px;}
 }
+/* ========================================
+   QUESTION ANSWER COVER
+======================================== */
+.answer-cover-wrap{
+position:relative;
+width:100%;
+min-height:170px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-top:15px;
+}
+.answer-hidden{
+width:100%;
+min-height:150px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+.answer-cover{
+position:absolute;
+inset:0;
+z-index:20;
+border:none;
+border-radius:20px;
+background:var(--cream);
+color:var(--green-dark);
+font-family:"Almarai",sans-serif;
+font-size:18px;
+font-weight:800;
+cursor:pointer;
+box-shadow:0 8px 25px rgba(0,0,0,.18);
+transition:transform .5s ease,opacity .4s ease;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+}
+.answer-cover i{
+font-size:15px;
+color:var(--green);
+}
+.answer-cover:hover{
+transform:translateY(4px);
+}
+.answer-cover-wrap.revealed .answer-cover{
+transform:translateY(115%);
+opacity:0;
+pointer-events:none;
+}
+.answer-cover-wrap.revealed .answer-hidden{
+opacity:1;
+}
+.image-challenge{
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:18px;
+}
+.challenge-image{
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:20px;
+overflow:hidden;
+}
+.challenge-image img{
+width:100%;
+max-height:300px;
+object-fit:contain;
+display:block;
+border-radius:20px;
+}
+.image-answer{
+position:relative;
+width:100%;
+min-height:85px;
+border-radius:18px;
+overflow:hidden;
+}
+.image-answer .answer-text{
+width:100%;
+min-height:85px;
+padding:15px;
+box-sizing:border-box;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-family:"Almarai",sans-serif;
+font-size:16px;
+font-weight:800;
+line-height:1.8;
+color:var(--green-dark);
+background:rgba(255,255,255,.55);
+}
+.image-answer .answer-cover{
+position:absolute;
+inset:0;
+z-index:10;
+width:100%;
+height:100%;
+border:none;
+border-radius:18px;
+background:var(--cream);
+color:var(--green-dark);
+font-family:"Almarai",sans-serif;
+font-size:13px;
+font-weight:800;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+box-shadow:0 6px 20px rgba(0,0,0,.12);
+transition:transform .5s ease,opacity .4s ease;
+}
+.image-answer .answer-cover:hover{
+transform:translateY(4px);
+}
+.image-answer .answer-cover.revealed{
+transform:translateY(110%);
+opacity:0;
+pointer-events:none;
+}
+@media(max-width:600px){
+.image-challenge{
+gap:14px;
+}
+.challenge-image img{
+max-height:220px;
+}
+.image-answer{
+min-height:75px;
+}
+.image-answer .answer-text{
+min-height:75px;
+font-size:14px;
+padding:12px;
+}
+.image-answer .answer-cover{
+font-size:11px;
+}
+}
 </style>
 </head>
 <body>
@@ -654,8 +801,8 @@ height:330px;
 <div class="intro-label">
 <i class="fa-solid fa-mountain"></i>فئة
 </div>
-<h1>فئة</h1>
-<p>وصف الفئة</p>
+<h1>تحدي الصور</h1>
+<p>تركيب كلمة من خلال الصور للوصول الى اسم صخر او معدن</p>
 </section>
 <section class="cards-grid">
 <article class="flash-card" data-index="0">
@@ -672,218 +819,8 @@ height:330px;
 </div>
 <div class="front-content">
 <div class="card-number">01</div>
-<h2>#عنوان البطاقة#</h2>
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-</div>
-<div class="card-arrow">
-<i class="fa-solid fa-arrow-left"></i>
-</div>
-</div>
-<div class="card-face card-back">
-<img class="back-image" src="#.jpg" alt="">
-<div class="back-overlay"></div>
-<div class="back-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="answer-content">
-<div class="answer-icon">
-<i class="fa-solid fa-mountain"></i>
-</div>
-<h3>#عنوان الإجابة#</h3>
-<p>#اكتب المحتوى هنا#</p>
-<button type="button" class="done-button">تم</button>
-</div>
-</div>
-</div>
-</article>
-<article class="flash-card" data-index="1">
-<div class="card-inner">
-<div class="card-face card-front">
-<img class="card-image" src="#.jpg" alt="">
-<div class="card-overlay"></div>
-<div class="card-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="front-content">
-<div class="card-number">02</div>
-<h2>#عنوان البطاقة#</h2>
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-</div>
-<div class="card-arrow">
-<i class="fa-solid fa-arrow-left"></i>
-</div>
-</div>
-<div class="card-face card-back">
-<img class="back-image" src="#.jpg" alt="">
-<div class="back-overlay"></div>
-<div class="back-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="answer-content">
-<div class="answer-icon">
-<i class="fa-solid fa-compass"></i>
-</div>
-<h3>#عنوان الإجابة#</h3>
-<p>#اكتب المحتوى هنا#</p>
-<button type="button" class="done-button">تم</button>
-</div>
-</div>
-</div>
-</article>
-<article class="flash-card" data-index="2">
-<div class="card-inner">
-<div class="card-face card-front">
-<img class="card-image" src="#.jpg" alt="">
-<div class="card-overlay"></div>
-<div class="card-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="front-content">
-<div class="card-number">03</div>
-<h2>#عنوان البطاقة#</h2>
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-</div>
-<div class="card-arrow">
-<i class="fa-solid fa-arrow-left"></i>
-</div>
-</div>
-<div class="card-face card-back">
-<img class="back-image" src="#.jpg" alt="">
-<div class="back-overlay"></div>
-<div class="back-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="answer-content">
-<div class="answer-icon">
-<i class="fa-solid fa-map"></i>
-</div>
-<h3>#عنوان الإجابة#</h3>
-<p>#اكتب المحتوى هنا#</p>
-<button type="button" class="done-button">تم</button>
-</div>
-</div>
-</div>
-</article>
-<article class="flash-card" data-index="3">
-<div class="card-inner">
-<div class="card-face card-front">
-<img class="card-image" src="#.jpg" alt="">
-<div class="card-overlay"></div>
-<div class="card-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="front-content">
-<div class="card-number">04</div>
-<h2>#عنوان البطاقة#</h2>
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-</div>
-<div class="card-arrow">
-<i class="fa-solid fa-arrow-left"></i>
-</div>
-</div>
-<div class="card-face card-back">
-<img class="back-image" src="#.jpg" alt="">
-<div class="back-overlay"></div>
-<div class="back-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="answer-content">
-<div class="answer-icon">
-<i class="fa-solid fa-person-hiking"></i>
-</div>
-<h3>#عنوان الإجابة#</h3>
-<p>#اكتب المحتوى هنا#</p>
-<button type="button" class="done-button">تم</button>
-</div>
-</div>
-</div>
-</article>
-<article class="flash-card" data-index="4">
-<div class="card-inner">
-<div class="card-face card-front">
-<img class="card-image" src="#.jpg" alt="">
-<div class="card-overlay"></div>
-<div class="card-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="front-content">
-<div class="card-number">05</div>
-<h2>#عنوان البطاقة#</h2>
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-</div>
-<div class="card-arrow">
-<i class="fa-solid fa-arrow-left"></i>
-</div>
-</div>
-<div class="card-face card-back">
-<img class="back-image" src="nov calendar.png" alt="">
-<div class="back-overlay"></div>
-<div class="back-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="answer-content">
-<div class="answer-icon">
-<i class="fa-solid fa-route"></i>
-</div>
-<h3>#عنوان الإجابة#</h3>
-<p>#اكتب المحتوى هنا#</p>
-<button type="button" class="done-button">تم</button>
-</div>
-</div>
-</div>
-</article>
-<article class="flash-card" data-index="5">
-<div class="card-inner">
-<div class="card-face card-front">
-<img class="card-image" src="#.jpg" alt="">
-<div class="card-overlay"></div>
-<div class="card-decoration">
-<div class="geo-line one"></div>
-<div class="geo-line two"></div>
-<div class="geo-line three"></div>
-<div class="geo-line four"></div>
-<div class="geo-line five"></div>
-</div>
-<div class="front-content">
-<div class="card-number">06</div>
-<h2>#عنوان البطاقة#</h2>
-<p>#اكتب وصفًا قصيرًا هنا#</p>
+<h2>فكر</h2>
+ 
 </div>
 <div class="card-arrow">
 <i class="fa-solid fa-arrow-left"></i>
@@ -903,8 +840,278 @@ height:330px;
 <div class="answer-icon">
 <i class="fa-solid fa-location-dot"></i>
 </div>
-<h3>#عنوان الإجابة#</h3>
-<p>#اكتب المحتوى هنا#</p>
+<div class="answer-content image-challenge">
+<div class="challenge-image">
+<img src="../IMG/CARDS6/DOL.jpeg">
+</div>
+<div class="image-answer">
+<div class="answer-text">
+دَلو + ميت = دلومايت</div>
+<button type="button" class="answer-cover">
+<i class="fa-solid fa-eye"></i>
+اضغط لكشف الإجابة
+</button>
+</div>
+<button type="button" class="done-button">تم</button>
+</div>
+</div>
+</div>
+</article>
+<article class="flash-card" data-index="1">
+<div class="card-inner">
+<div class="card-face card-front">
+<img class="card-image" src="#.jpg" alt="">
+<div class="card-overlay"></div>
+<div class="card-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="front-content">
+<div class="card-number">02</div>
+<h2>فكر</h2>
+ 
+</div>
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</div>
+<div class="card-face card-back">
+<img class="back-image" src="#.jpg" alt="">
+<div class="back-overlay"></div>
+<div class="back-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="answer-content">
+<div class="answer-icon">
+<i class="fa-solid fa-location-dot"></i>
+</div>
+<div class="answer-content image-challenge">
+<div class="challenge-image">
+<img src="../IMG/CARDS6/RAY.jpeg">
+</div>
+<div class="image-answer">
+<div class="answer-text">
+رايه + لايت بالانجليزي = رايولايت</div>
+<button type="button" class="answer-cover">
+<i class="fa-solid fa-eye"></i>
+اضغط لكشف الإجابة
+</button>
+</div>
+<button type="button" class="done-button">تم</button>
+</div>
+</div>
+</div>
+</article>
+<article class="flash-card" data-index="2">
+<div class="card-inner">
+<div class="card-face card-front">
+<img class="card-image" src="#.jpg" alt="">
+<div class="card-overlay"></div>
+<div class="card-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="front-content">
+<div class="card-number">03</div>
+<h2>فكر</h2>
+ 
+</div>
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</div>
+<div class="card-face card-back">
+<img class="back-image" src="#.jpg" alt="">
+<div class="back-overlay"></div>
+<div class="back-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="answer-content">
+<div class="answer-icon">
+<i class="fa-solid fa-location-dot"></i>
+</div>
+<div class="answer-content image-challenge">
+<div class="challenge-image">
+<img src="../IMG/CARDS6/QZ.jpeg">
+</div>
+<div class="image-answer">
+<div class="answer-text">
+كوره + رتز = كوارتز</div>
+<button type="button" class="answer-cover">
+<i class="fa-solid fa-eye"></i>
+اضغط لكشف الإجابة
+</button>
+</div>
+<button type="button" class="done-button">تم</button>
+</div>
+</div>
+</div>
+</article>
+<article class="flash-card" data-index="3">
+<div class="card-inner">
+<div class="card-face card-front">
+<img class="card-image" src="#.jpg" alt="">
+<div class="card-overlay"></div>
+<div class="card-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="front-content">
+<div class="card-number">04</div>
+<h2>فكر</h2>
+ 
+</div>
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</div>
+<div class="card-face card-back">
+<img class="back-image" src="#.jpg" alt="">
+<div class="back-overlay"></div>
+<div class="back-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="answer-content">
+<div class="answer-icon">
+<i class="fa-solid fa-location-dot"></i>
+</div>
+<div class="answer-content image-challenge">
+<div class="challenge-image">
+<img src="../IMG/CARDS6/TOPZ.jpeg">
+</div>
+<div class="image-answer">
+<div class="answer-text">
+توب + باز = توباز</div>
+<button type="button" class="answer-cover">
+<i class="fa-solid fa-eye"></i>
+اضغط لكشف الإجابة
+</button>
+</div>
+<button type="button" class="done-button">تم</button>
+</div>
+</div>
+</div>
+</article>
+<article class="flash-card" data-index="4">
+<div class="card-inner">
+<div class="card-face card-front">
+<img class="card-image" src="#.jpg" alt="">
+<div class="card-overlay"></div>
+<div class="card-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="front-content">
+<div class="card-number">05</div>
+<h2>فكر</h2>
+ 
+</div>
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</div>
+<div class="card-face card-back">
+<img class="back-image" src="nov calendar.png" alt="">
+<div class="back-overlay"></div>
+<div class="back-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="answer-content">
+<div class="answer-icon">
+<i class="fa-solid fa-location-dot"></i>
+</div>
+<div class="answer-content image-challenge">
+<div class="challenge-image">
+<img src="../IMG/CARDS6/BZLT.jpeg">
+</div>
+<div class="image-answer">
+<div class="answer-text">
+بازلاء + ت = بازلت</div>
+<button type="button" class="answer-cover">
+<i class="fa-solid fa-eye"></i>
+اضغط لكشف الإجابة
+</button>
+</div>
+<button type="button" class="done-button">تم</button>
+</div>
+</div>
+</div>
+</article>
+<article class="flash-card" data-index="5">
+<div class="card-inner">
+<div class="card-face card-front">
+<img class="card-image" src="#.jpg" alt="">
+<div class="card-overlay"></div>
+<div class="card-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="front-content">
+<div class="card-number">06</div>
+<h2>فكر</h2>
+ 
+</div>
+<div class="card-arrow">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</div>
+<div class="card-face card-back">
+<img class="back-image" src="#.jpg" alt="">
+<div class="back-overlay"></div>
+<div class="back-decoration">
+<div class="geo-line one"></div>
+<div class="geo-line two"></div>
+<div class="geo-line three"></div>
+<div class="geo-line four"></div>
+<div class="geo-line five"></div>
+</div>
+<div class="answer-content">
+<div class="answer-icon">
+<i class="fa-solid fa-location-dot"></i>
+</div>
+<div class="answer-content image-challenge">
+<div class="challenge-image">
+<img src="../IMG/CARDS6/GRNT.jpeg">
+</div>
+<div class="image-answer">
+<div class="answer-text">
+جري بالماضي جرى + نت = جرانيت</div>
+<button type="button" class="answer-cover">
+<i class="fa-solid fa-eye"></i>
+اضغط لكشف الإجابة
+</button>
+</div>
 <button type="button" class="done-button">تم</button>
 </div>
 </div>
@@ -916,28 +1123,50 @@ height:330px;
 JAVASCRIPT
 ======================================== -->
 <script>
-const cards=document.querySelectorAll(".flash-card");
-const overlay=document.getElementById("focusOverlay");
-const resetButton=document.getElementById("resetButton");
-const backButton=document.getElementById("backButton");
-const STORAGE_KEY="cards6CompletedCards";
+const STORAGE_KEY="cards1CompletedCards";
+const STATE_KEY="cards1State";
+const cards=[...document.querySelectorAll(".flash-card")];
 let completedCards=JSON.parse(localStorage.getItem(STORAGE_KEY))||[];
-function isMobile(){return window.innerWidth<=600;}
+let savedState=JSON.parse(localStorage.getItem(STATE_KEY))||{};
+function isMobile(){
+return window.innerWidth<=600;
+}
+function saveCardState(card){
+const index=Number(card.dataset.index);
+savedState[index]={
+flipped:card.classList.contains("flipped"),
+mobileAnswer:card.classList.contains("mobile-answer"),
+completed:card.classList.contains("completed"),
+revealed:[...card.querySelectorAll(".answer-cover-wrap")].map(function(wrap){
+return wrap.classList.contains("revealed");
+}),
+questionRevealed:[...card.querySelectorAll(".question-second-cover")].map(function(wrap){
+return wrap.classList.contains("revealed");
+}),
+covers:[...card.querySelectorAll(".answer-cover")].map(function(cover){
+return cover.classList.contains("revealed");
+})
+};
+localStorage.setItem(STATE_KEY,JSON.stringify(savedState));
+}
 function openCard(card){
-if(!card)return;
 if(card.classList.contains("completed"))return;
 if(card.classList.contains("focused"))return;
 if(isMobile()){
-card.classList.add("mobile-answer","focused");
-overlay.classList.add("active");
+card.classList.add("mobile-answer");
+saveCardState(card);
+setTimeout(function(){
+card.classList.add("focused");
+document.querySelector(".focus-overlay").classList.add("active");
 document.body.style.overflow="hidden";
+},100);
 return;
 }
 card.classList.add("flipped");
+saveCardState(card);
 setTimeout(function(){
-if(card.classList.contains("completed"))return;
 card.classList.add("focused");
-overlay.classList.add("active");
+document.querySelector(".focus-overlay").classList.add("active");
 document.body.style.overflow="hidden";
 },100);
 }
@@ -945,54 +1174,124 @@ function completeCard(card){
 if(!card)return;
 if(card.classList.contains("completed"))return;
 const index=Number(card.dataset.index);
-if(completedCards.includes(index))return;
+if(!completedCards.includes(index)){
 completedCards.push(index);
+}
 localStorage.setItem(STORAGE_KEY,JSON.stringify(completedCards));
 card.classList.remove("focused");
-overlay.classList.remove("active");
+document.querySelector(".focus-overlay").classList.remove("active");
 document.body.style.overflow="";
-if(isMobile()){
-card.classList.add("mobile-answer","completed");
-return;
-}
-setTimeout(function(){card.classList.add("completed");},450);
+setTimeout(function(){
+card.classList.add("completed");
+saveCardState(card);
+},450);
 }
 cards.forEach(function(card){
 card.addEventListener("click",function(event){
 if(event.target.closest(".done-button"))return;
+if(event.target.closest(".answer-cover"))return;
 openCard(card);
 });
 });
 document.addEventListener("click",function(event){
-const button=event.target.closest(".done-button");
-if(!button)return;
+const doneButton=event.target.closest(".done-button");
+if(!doneButton)return;
 event.preventDefault();
-event.stopPropagation();
 event.stopImmediatePropagation();
-const card=button.closest(".flash-card");
-if(card)completeCard(card);
+const card=doneButton.closest(".flash-card");
+if(card){
+completeCard(card);
+}
+},true);
+document.addEventListener("click",function(event){
+const answerCover=event.target.closest(".answer-cover");
+if(!answerCover)return;
+event.preventDefault();
+event.stopImmediatePropagation();
+if(answerCover.classList.contains("revealed"))return;
+const wrap=answerCover.closest(".answer-cover-wrap");
+const questionSecond=answerCover.closest(".question-second-cover");
+if(wrap){
+wrap.classList.add("revealed");
+}
+if(questionSecond&&answerCover.classList.contains("question-cover")){
+questionSecond.classList.add("revealed");
+}
+answerCover.classList.add("revealed");
+const card=answerCover.closest(".flash-card");
+if(card){
+saveCardState(card);
+}
 },true);
 function resetCards(){
-completedCards=[];
 localStorage.removeItem(STORAGE_KEY);
-cards.forEach(function(card){card.classList.remove("completed","focused","flipped","mobile-answer");});
-overlay.classList.remove("active");
+localStorage.removeItem(STATE_KEY);
+completedCards=[];
+savedState={};
+cards.forEach(function(card){
+card.classList.remove("completed","focused","flipped","mobile-answer");
+card.querySelectorAll(".answer-cover-wrap").forEach(function(wrap){
+wrap.classList.remove("revealed");
+});
+card.querySelectorAll(".question-second-cover").forEach(function(wrap){
+wrap.classList.remove("revealed");
+});
+card.querySelectorAll(".answer-cover").forEach(function(cover){
+cover.classList.remove("revealed");
+});
+});
+document.querySelector(".focus-overlay").classList.remove("active");
 document.body.style.overflow="";
 }
-function goBack(){window.location.href="../index.html";}
-resetButton.addEventListener("click",function(event){event.preventDefault();event.stopPropagation();resetCards();});
-backButton.addEventListener("click",function(event){event.preventDefault();event.stopPropagation();goBack();});
-function restoreCompletedCards(){
+function goBack(){
+window.location.href="../index.html";
+}
+function restoreCardStates(){
 cards.forEach(function(card){
 const index=Number(card.dataset.index);
-if(completedCards.includes(index)){
-card.classList.add("completed");
-if(isMobile())card.classList.add("mobile-answer");
-else card.classList.add("flipped");
+const state=savedState[index];
+if(state){
+if(state.flipped){
+card.classList.add("flipped");
+}
+if(state.mobileAnswer){
+card.classList.add("mobile-answer");
+}
+card.querySelectorAll(".answer-cover-wrap").forEach(function(wrap,i){
+if(state.revealed&&state.revealed[i]){
+wrap.classList.add("revealed");
+}
+});
+card.querySelectorAll(".question-second-cover").forEach(function(wrap,i){
+if(state.questionRevealed&&state.questionRevealed[i]){
+wrap.classList.add("revealed");
+}
+});
+card.querySelectorAll(".answer-cover").forEach(function(cover,i){
+if(state.covers&&state.covers[i]){
+cover.classList.add("revealed");
 }
 });
 }
-restoreCompletedCards();
+if(completedCards.includes(index)){
+card.classList.add("completed");
+if(isMobile()){
+card.classList.add("mobile-answer");
+}else{
+card.classList.add("flipped");
+}
+}
+});
+}
+const backButton=document.querySelector(".back-btn");
+const resetButton=document.querySelector(".reset-btn");
+if(backButton){
+backButton.addEventListener("click",goBack);
+}
+if(resetButton){
+resetButton.addEventListener("click",resetCards);
+}
+restoreCardStates();
 </script>
 </body>
 </html>

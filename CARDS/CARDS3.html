@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>بطاقات ال</title>
-
+<title>بطاقات SGC101</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-
 <style>
-
-/* ========================================
-   VARIABLES
-======================================== */
-
 :root{
 --cream:#fffaef;
 --cream-dark:#f2ebdd;
@@ -30,22 +19,14 @@
 --blue:#2e5f6e;
 --white:#ffffff;
 }
-
-
-/* ========================================
-   RESET
-======================================== */
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
-
 html{
 scroll-behavior:smooth;
 }
-
 body{
 min-height:100vh;
 margin:0;
@@ -54,16 +35,9 @@ background:var(--cream);
 color:var(--green-dark);
 overflow-x:hidden;
 }
-
 button{
 font-family:"Almarai",sans-serif;
 }
-
-
-/* ========================================
-   BACKGROUND
-======================================== */
-
 .background-design{
 position:fixed;
 inset:0;
@@ -71,95 +45,48 @@ z-index:-5;
 pointer-events:none;
 overflow:hidden;
 background:
-radial-gradient(
-circle at 10% 15%,
-rgba(111,168,146,.16),
-transparent 25%
-),
-radial-gradient(
-circle at 90% 85%,
-rgba(200,185,138,.18),
-transparent 28%
-),
+radial-gradient(circle at 10% 15%,rgba(111,168,146,.16),transparent 25%),
+radial-gradient(circle at 90% 85%,rgba(200,185,138,.18),transparent 28%),
 #fffaef;
 }
-
-
-/* ========================================
-   POLYGONS
-======================================== */
-
 .polygon{
 position:absolute;
 border-radius:40px;
 }
-
 .p1{
 top:-100px;
 right:-90px;
 width:360px;
 height:360px;
 background:rgba(111,168,146,.16);
-clip-path:polygon(
-30% 0%,
-100% 0%,
-100% 70%,
-65% 100%,
-0% 45%
-);
+clip-path:polygon(30% 0%,100% 0%,100% 70%,65% 100%,0% 45%);
 transform:rotate(8deg);
 }
-
 .p2{
 top:20%;
 left:-150px;
 width:330px;
 height:330px;
 background:rgba(200,185,138,.15);
-clip-path:polygon(
-0% 20%,
-70% 0%,
-100% 65%,
-35% 100%
-);
-
+clip-path:polygon(0% 20%,70% 0%,100% 65%,35% 100%);
 transform:rotate(-12deg);
 }
-
 .p3{
 bottom:-130px;
 left:15%;
 width:350px;
 height:350px;
 background:rgba(111,168,146,.11);
-clip-path:polygon(
-20% 0%,
-100% 35%,
-75% 100%,
-0% 70%
-);
+clip-path:polygon(20% 0%,100% 35%,75% 100%,0% 70%);
 }
-
 .p4{
 bottom:-120px;
 right:-80px;
 width:330px;
 height:330px;
 background:rgba(200,185,138,.13);
-clip-path:polygon(
-0% 30%,
-55% 0%,
-100% 45%,
-70% 100%,
-15% 80%
-);
+clip-path:polygon(0% 30%,55% 0%,100% 45%,70% 100%,15% 80%);
 }
-
-
-/* ========================================
-   TOPOGRAPHIC LINES
-======================================== */
-
 .topographic-lines{
 position:absolute;
 width:700px;
@@ -168,93 +95,53 @@ border:1px solid rgba(15,61,46,.07);
 border-radius:48% 52% 55% 45%;
 transform:rotate(-18deg);
 }
-
 .line1{
 top:-280px;
 left:-180px;
 }
-
 .line2{
 top:-245px;
 left:-145px;
-transform:
-rotate(-18deg)
-scale(.88);
+transform:rotate(-18deg) scale(.88);
 }
-
 .line3{
 top:-210px;
 left:-110px;
-transform:
-rotate(-18deg)
-scale(.76);
+transform:rotate(-18deg) scale(.76);
 }
-
 .line4{
 bottom:-300px;
 right:-180px;
 transform:rotate(28deg);
 }
-
 .line5{
 bottom:-265px;
 right:-145px;
-transform:
-rotate(28deg)
-scale(.88);
+transform:rotate(28deg) scale(.88);
 }
-
 .line6{
 bottom:-230px;
 right:-110px;
-transform:
-rotate(28deg)
-scale(.76);
+transform:rotate(28deg) scale(.76);
 }
-
-
-/* ========================================
-   DOTS
-======================================== */
-
 .dots-pattern{
 position:absolute;
 top:14%;
 right:7%;
 width:90px;
 height:90px;
-background-image:
-radial-gradient(
-rgba(15,61,46,.12) 1.5px,
-transparent 1.5px
-);
-
+background-image:radial-gradient(rgba(15,61,46,.12) 1.5px,transparent 1.5px);
 background-size:15px 15px;
 opacity:.45;
 }
-
-
-/* ========================================
-   PAGE
-======================================== */
-
 .page{
 width:100%;
 min-height:100vh;
-padding:
-40px
-6vw
-60px;
+padding:40px 6vw 60px;
 display:flex;
 flex-direction:column;
 align-items:center;
 }
-
-
-/* ========================================
-   TOP CONTROLS
-======================================== */
-
 .top-controls{
 width:100%;
 max-width:1200px;
@@ -263,186 +150,110 @@ align-items:center;
 justify-content:space-between;
 margin-bottom:30px;
 }
-
-
-/* ========================================
-   CONTROL BUTTONS
-======================================== */
-
-.back-btn,
-.reset-btn{
+.back-btn,.reset-btn{
 border:none;
 cursor:pointer;
 display:flex;
 align-items:center;
 gap:9px;
-padding:
-11px
-18px;
+padding:11px 18px;
 border-radius:50px;
 font-size:12px;
 font-weight:700;
-transition:
-transform .3s ease,
-background .3s ease,
-box-shadow .3s ease;
+transition:transform .3s ease,background .3s ease,box-shadow .3s ease;
 }
-
 .back-btn{
 background:rgba(255,255,255,.75);
 color:var(--green-dark);
-border:
-1px solid
-rgba(15,61,46,.1);
-box-shadow:
-0 6px 20px
-rgba(15,61,46,.05);
+border:1px solid rgba(15,61,46,.1);
+box-shadow:0 6px 20px rgba(15,61,46,.05);
 }
-
 .reset-btn{
 background:var(--green-dark);
 color:white;
-box-shadow:
-0 8px 22px
-rgba(15,61,46,.15);
+box-shadow:0 8px 22px rgba(15,61,46,.15);
 }
-
-.back-btn:hover,
-.reset-btn:hover{
+.back-btn:hover,.reset-btn:hover{
 transform:translateY(-3px);
 }
-
 .back-btn:hover{
 background:white;
 }
-
 .reset-btn:hover{
 background:var(--green);
 }
-
-
-/* ========================================
-   INTRO
-======================================== */
-
 .intro{
 width:100%;
 max-width:1000px;
 text-align:center;
 margin-bottom:45px;
 }
-
 .intro-label{
 display:inline-flex;
 align-items:center;
 gap:9px;
-padding:
-8px
-17px;
-border:
-1px solid
-rgba(31,111,84,.15);
+padding:8px 17px;
+border:1px solid rgba(31,111,84,.15);
 border-radius:50px;
-background:
-rgba(255,255,255,.6);
+background:rgba(255,255,255,.6);
 color:var(--green);
 font-family:"Almarai",sans-serif;
 font-size:12px;
 font-weight:700;
 margin-bottom:18px;
-box-shadow:
-0 5px 20px
-rgba(15,61,46,.04);
+box-shadow:0 5px 20px rgba(15,61,46,.04);
 }
-
 .intro-label i{
 font-size:11px;
 color:var(--orange);
 }
-
 .intro h1{
 font-family:"Almarai",sans-serif;
-font-size:
-clamp(30px,5vw,52px);
+font-size:clamp(30px,5vw,52px);
 font-weight:800;
 line-height:1.2;
 color:var(--green-dark);
 margin-bottom:12px;
 }
-
 .intro h1 span{
 color:var(--green);
 }
-
 .intro p{
 max-width:620px;
 margin:auto;
-font-size:
-clamp(13px,1.5vw,16px);
+font-size:clamp(13px,1.5vw,16px);
 line-height:1.9;
-color:
-rgba(15,61,46,.62);
+color:rgba(15,61,46,.62);
 }
-
-
-/* ========================================
-   CARDS GRID
-======================================== */
-
 .cards-grid{
 width:100%;
 max-width:1200px;
 display:grid;
-grid-template-columns:
-repeat(3,1fr);
+grid-template-columns:repeat(3,1fr);
 gap:24px;
 }
-
-
-/* ========================================
-   FLASH CARD
-======================================== */
-
 .flash-card{
 position:relative;
 height:350px;
 perspective:1400px;
 cursor:pointer;
-transition:
-transform .45s ease,
-opacity .45s ease;
+transition:transform .45s ease,opacity .45s ease;
 }
-
 .flash-card:hover{
 transform:translateY(-5px);
 }
-
-
-/* ========================================
-   CARD INNER
-======================================== */
-
 .card-inner{
 position:relative;
 width:100%;
 height:100%;
 transform-style:preserve-3d;
 -webkit-transform-style:preserve-3d;
-transition:
-transform .75s
-cubic-bezier(.4,0,.2,1);
+transition:transform .75s cubic-bezier(.4,0,.2,1);
 }
-
 .flash-card.flipped .card-inner{
 transform:rotateY(180deg);
 -webkit-transform:rotateY(180deg);
 }
-
-
-/* ========================================
-   CARD FACE
-======================================== */
-
 .card-face{
 position:absolute;
 inset:0;
@@ -452,101 +263,47 @@ border-radius:28px;
 overflow:hidden;
 backface-visibility:hidden;
 -webkit-backface-visibility:hidden;
-box-shadow:
-0 15px 35px
-rgba(15,61,46,.12),
-0 4px 12px
-rgba(15,61,46,.06);
+box-shadow:0 15px 35px rgba(15,61,46,.12),0 4px 12px rgba(15,61,46,.06);
 }
-
-
-/* ========================================
-   FRONT
-======================================== */
-
 .card-front{
 background:var(--green-dark);
 }
-
-
-/* ========================================
-   CARD IMAGE
-======================================== */
-
 .card-image{
 position:absolute;
 inset:0;
 width:100%;
 height:100%;
 object-fit:cover;
-transition:
-transform .7s ease,
-filter .7s ease;
+transition:transform .7s ease,filter .7s ease;
+pointer-events:none;
 }
-
 .flash-card:hover .card-image{
 transform:scale(1.06);
 filter:saturate(1.08);
 }
-
-
-/* ========================================
-   CARD OVERLAY
-======================================== */
-
 .card-overlay{
 position:absolute;
 inset:0;
 z-index:1;
 pointer-events:none;
-background:
-linear-gradient(
-180deg,
-rgba(15,61,46,.15) 0%,
-rgba(15,61,46,.28) 45%,
-rgba(5,25,19,.82) 100%
-);
-
-transition:
-background .5s ease;
+background:linear-gradient(180deg,rgba(15,61,46,.15) 0%,rgba(15,61,46,.28) 45%,rgba(5,25,19,.82) 100%);
+transition:background .5s ease;
 }
-
 .flash-card:hover .card-overlay{
-background:
-linear-gradient(
-180deg,
-rgba(15,61,46,.10) 0%,
-rgba(15,61,46,.24) 45%,
-rgba(5,25,19,.76) 100%
-);
+background:linear-gradient(180deg,rgba(15,61,46,.10) 0%,rgba(15,61,46,.24) 45%,rgba(5,25,19,.76) 100%);
 }
-
-
-/* ========================================
-   TOPOGRAPHIC DECORATION
-======================================== */
-
-.card-decoration,
-.back-decoration{
+.card-decoration,.back-decoration{
 position:absolute;
 inset:0;
 z-index:2;
 pointer-events:none;
 opacity:.55;
 }
-
 .geo-line{
 position:absolute;
-border:
-1px solid
-rgba(255,255,255,.35);
-border-radius:
-48%
-52%
-45%
-55%;
+border:1px solid rgba(255,255,255,.35);
+border-radius:48% 52% 45% 55%;
 }
-
 .geo-line.one{
 width:390px;
 height:280px;
@@ -554,7 +311,6 @@ top:-110px;
 right:-130px;
 transform:rotate(18deg);
 }
-
 .geo-line.two{
 width:330px;
 height:235px;
@@ -562,7 +318,6 @@ top:-85px;
 right:-100px;
 transform:rotate(18deg);
 }
-
 .geo-line.three{
 width:270px;
 height:190px;
@@ -570,7 +325,6 @@ top:-60px;
 right:-70px;
 transform:rotate(18deg);
 }
-
 .geo-line.four{
 width:340px;
 height:240px;
@@ -578,7 +332,6 @@ bottom:-120px;
 left:-130px;
 transform:rotate(-20deg);
 }
-
 .geo-line.five{
 width:285px;
 height:200px;
@@ -586,12 +339,6 @@ bottom:-95px;
 left:-100px;
 transform:rotate(-20deg);
 }
-
-
-/* ========================================
-   FRONT CONTENT
-======================================== */
-
 .front-content{
 position:absolute;
 inset:0;
@@ -605,7 +352,6 @@ text-align:center;
 color:white;
 pointer-events:none;
 }
-
 .card-number{
 width:44px;
 height:44px;
@@ -613,44 +359,27 @@ display:flex;
 align-items:center;
 justify-content:center;
 border-radius:14px;
-background:
-rgba(255,255,255,.15);
-border:
-1px solid
-rgba(255,255,255,.3);
+background:rgba(255,255,255,.15);
+border:1px solid rgba(255,255,255,.3);
 backdrop-filter:blur(7px);
 font-family:"Almarai",sans-serif;
 font-size:13px;
 font-weight:800;
 margin-bottom:18px;
-box-shadow:
-0 7px 20px
-rgba(0,0,0,.1);
+box-shadow:0 7px 20px rgba(0,0,0,.1);
 }
-
 .front-content h2{
 font-family:"Almarai",sans-serif;
-font-size:
-clamp(19px,2vw,25px);
+font-size:clamp(19px,2vw,25px);
 font-weight:800;
 line-height:1.5;
-text-shadow:
-0 3px 15px
-rgba(0,0,0,.25);
+text-shadow:0 3px 15px rgba(0,0,0,.25);
 }
-
 .front-content p{
 margin-top:9px;
 font-size:12px;
-color:
-rgba(255,255,255,.82);
+color:rgba(255,255,255,.82);
 }
-
-
-/* ========================================
-   ARROW
-======================================== */
-
 .card-arrow{
 position:absolute;
 bottom:22px;
@@ -662,29 +391,16 @@ display:flex;
 align-items:center;
 justify-content:center;
 border-radius:50%;
-background:
-rgba(255,255,255,.15);
-border:
-1px solid
-rgba(255,255,255,.25);
+background:rgba(255,255,255,.15);
+border:1px solid rgba(255,255,255,.25);
 font-size:12px;
 pointer-events:none;
-transition:
-transform .35s ease,
-background .35s ease;
+transition:transform .35s ease,background .35s ease;
 }
-
 .flash-card:hover .card-arrow{
 transform:translateX(-5px);
-background:
-rgba(255,255,255,.25);
+background:rgba(255,255,255,.25);
 }
-
-
-/* ========================================
-   BACK
-======================================== */
-
 .card-back{
 transform:rotateY(180deg);
 -webkit-transform:rotateY(180deg);
@@ -694,20 +410,8 @@ display:flex;
 flex-direction:column;
 justify-content:space-between;
 padding:30px;
-
-/*
-   مهم:
-   نخلي جهة الإجابة تستقبل الضغط
-*/
-
 pointer-events:auto;
 }
-
-
-/* ========================================
-   BACK IMAGE
-======================================== */
-
 .back-image{
 position:absolute;
 inset:0;
@@ -718,41 +422,17 @@ z-index:0;
 filter:saturate(.8);
 pointer-events:none;
 }
-
-
-/* ========================================
-   BACK OVERLAY
-======================================== */
-
 .back-overlay{
 position:absolute;
 inset:0;
 z-index:1;
 pointer-events:none;
-background:
-linear-gradient(
-180deg,
-rgba(15,61,46,.84),
-rgba(5,28,21,.94)
-);
+background:linear-gradient(180deg,rgba(15,61,46,.84),rgba(5,28,21,.94));
 }
-
-
-/* ========================================
-   BACK DECORATION
-======================================== */
-
 .back-decoration{
 z-index:2;
-
 pointer-events:none;
 }
-
-
-/* ========================================
-   ANSWER CONTENT
-======================================== */
-
 .answer-content{
 position:relative;
 z-index:5;
@@ -763,19 +443,9 @@ flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:
-20px
-10px
-95px;
-
-/*
-   مهم جدًا:
-   المحتوى نفسه يستقبل الضغط
-*/
-
+padding:20px 10px 95px;
 pointer-events:auto;
 }
-
 .answer-icon{
 width:58px;
 height:58px;
@@ -783,52 +453,36 @@ display:flex;
 align-items:center;
 justify-content:center;
 border-radius:18px;
-background:
-rgba(255,255,255,.12);
-border:
-1px solid
-rgba(255,255,255,.2);
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.2);
 margin-bottom:20px;
 font-size:20px;
 pointer-events:none;
 }
-
 .answer-content h3{
 font-family:"Almarai",sans-serif;
-font-size:
-clamp(18px,2vw,24px);
+font-size:clamp(18px,2vw,24px);
 font-weight:800;
 margin-bottom:12px;
 pointer-events:none;
 }
-
 .answer-content p{
-font-size:13px;
+font-size:35px;
 line-height:1.9;
-color:
-rgba(255,255,255,.84);
+color:rgba(255,255,255,.84);
 max-width:480px;
 pointer-events:none;
 }
-
-
-/* ========================================
-   DONE BUTTON
-======================================== */
-
 .done-button{
 position:absolute;
 bottom:25px;
 left:50%;
-transform:
-translateX(-50%);
+transform:translateX(-50%);
 z-index:9999;
 display:block;
 width:auto;
 min-width:120px;
-padding:
-12px
-28px;
+padding:12px 28px;
 border:none;
 border-radius:50px;
 background:white;
@@ -837,162 +491,74 @@ font-family:"Almarai",sans-serif;
 font-size:12px;
 font-weight:800;
 cursor:pointer;
-
-/*
-   أهم سطرين:
-*/
-
 pointer-events:auto !important;
 touch-action:manipulation;
 user-select:none;
 -webkit-user-select:none;
-
-box-shadow:
-0 8px 25px
-rgba(0,0,0,.18);
-transition:
-transform .3s ease,
-box-shadow .3s ease,
-background .3s ease;
+box-shadow:0 8px 25px rgba(0,0,0,.18);
+transition:transform .3s ease,box-shadow .3s ease,background .3s ease;
 }
-
 .done-button:hover{
-transform:
-translateX(-50%)
-translateY(-3px);
-
-box-shadow:
-0 12px 30px
-rgba(0,0,0,.25);
-
+transform:translateX(-50%) translateY(-3px);
+box-shadow:0 12px 30px rgba(0,0,0,.25);
 background:#fffaef;
 }
-
 .done-button:active{
-transform:
-translateX(-50%)
-translateY(0);
+transform:translateX(-50%) translateY(0);
 }
-
-
-/* ========================================
-   FOCUSED CARD
-======================================== */
-
 .flash-card.focused{
 position:fixed;
 top:50%;
 left:50%;
-width:
-min(560px,82vw);
-height:
-min(620px,78vh);
+width:min(560px,82vw);
+height:min(620px,78vh);
 z-index:1000;
 margin:0;
-transform:
-translate(-50%,-50%)
-!important;
+transform:translate(-50%,-50%) !important;
 cursor:default;
-transition:
-width .45s ease,
-height .45s ease,
-transform .45s ease,
-opacity .45s ease;
+transition:width .45s ease,height .45s ease,transform .45s ease,opacity .45s ease;
 }
-
 .flash-card.focused:hover{
-transform:
-translate(-50%,-50%)
-!important;
+transform:translate(-50%,-50%) !important;
 }
-
 .flash-card.focused .card-face{
-box-shadow:
-0 30px 80px
-rgba(0,0,0,.35),
-0 10px 30px
-rgba(15,61,46,.18);
+box-shadow:0 30px 80px rgba(0,0,0,.35),0 10px 30px rgba(15,61,46,.18);
 }
-
-
-/*
-   نخلي زر تم فوق كل شيء
-   داخل البطاقة المركزة
-*/
-
 .flash-card.focused .done-button{
 z-index:99999;
 pointer-events:auto !important;
 }
-
-
-/* ========================================
-   FOCUS OVERLAY
-======================================== */
-
 .focus-overlay{
 position:fixed;
 inset:0;
 z-index:900;
-background:
-rgba(7,28,21,.55);
+background:rgba(7,28,21,.55);
 backdrop-filter:blur(4px);
 opacity:0;
 visibility:hidden;
-
-/*
-   الخلفية لا تستقبل أي ضغط
-*/
-
 pointer-events:none;
-transition:
-opacity .35s ease,
-visibility .35s ease;
+transition:opacity .35s ease,visibility .35s ease;
 }
-
 .focus-overlay.active{
 opacity:1;
 visibility:visible;
 pointer-events:none;
 }
-
-
-/* ========================================
-   COMPLETED
-======================================== */
-
 .flash-card.completed{
 cursor:default;
 transform:none !important;
 opacity:.72;
-transition:
-opacity .35s ease;
+transition:opacity .35s ease;
 }
-
 .flash-card.completed:hover{
 transform:none !important;
 }
-
 .flash-card.completed .card-image{
-filter:
-saturate(.65)
-brightness(.82);
+filter:saturate(.65) brightness(.82);
 }
-
 .flash-card.completed .card-overlay{
-background:
-linear-gradient(
-180deg,
-rgba(15,61,46,.25),
-rgba(5,25,19,.86)
-);
+background:linear-gradient(180deg,rgba(15,61,46,.25),rgba(5,25,19,.86));
 }
-
-
-/* ========================================
-   COMPLETED CHECK
-======================================== */
-
 .flash-card.completed::after{
 content:"✓";
 position:absolute;
@@ -1005,132 +571,13 @@ display:flex;
 align-items:center;
 justify-content:center;
 border-radius:50%;
-background:
-rgba(255,255,255,.92);
+background:rgba(255,255,255,.92);
 color:var(--green);
 font-size:15px;
 font-weight:800;
-box-shadow:
-0 6px 18px
-rgba(0,0,0,.12);
+box-shadow:0 6px 18px rgba(0,0,0,.12);
 pointer-events:none;
 }
-
-
-/* ========================================
-   RESPONSIVE
-======================================== */
-
-@media(max-width:900px){
-
-.cards-grid{
-grid-template-columns:
-repeat(2,1fr);
-
-gap:20px;
-}
-
-.flash-card{
-height:330px;
-}
-
-}
-
-
-@media(max-width:600px){
-
-.page{
-padding:
-25px
-5vw
-45px;
-}
-
-.top-controls{
-margin-bottom:25px;
-}
-
-.cards-grid{
-grid-template-columns:1fr;
-gap:18px;
-}
-
-.flash-card{
-height:340px;
-}
-
-.intro{
-margin-bottom:30px;
-}
-
-.flash-card.focused{
-width:88vw;
-height:78vh;
-}
-
-.back-btn,
-.reset-btn{
-padding:
-10px
-14px;
-font-size:11px;
-}
-
-}
-/* ========================================
-   MOBILE CARD FLIP FIX
-======================================== */
-
-@media(max-width:600px){
-
-  .flash-card .card-inner{
-    transform:none !important;
-    -webkit-transform:none !important;
-    transition:none;
-  }
-
-  .flash-card .card-front{
-    opacity:1;
-    transform:scaleX(1);
-    transition:
-      opacity .35s ease,
-      transform .35s ease;
-  }
-
-  .flash-card .card-back{
-    transform:none !important;
-    -webkit-transform:none !important;
-    opacity:0;
-    visibility:hidden;
-    transition:
-      opacity .35s ease,
-      transform .35s ease,
-      visibility .35s ease;
-  }
-
-  .flash-card.flipped .card-front{
-    opacity:0;
-    transform:scaleX(.85);
-  }
-
-  .flash-card.flipped .card-back{
-    opacity:1;
-    visibility:visible;
-    transform:scaleX(1) !important;
-    -webkit-transform:scaleX(1) !important;
-  }
-
-}
-
-/* ========================================
-   IMPORTANT CLICK LAYERS
-======================================== */
-
-/*
-   لا يوجد أي عنصر زخرفي فوق زر تم
-   يمكنه استقبال الضغط.
-*/
-
 .flash-card .card-image,
 .flash-card .card-overlay,
 .flash-card .card-decoration,
@@ -1139,36 +586,99 @@ font-size:11px;
 .flash-card .back-decoration{
 pointer-events:none;
 }
-
-
-/*
-   الزر والمحتوى فوق كل الطبقات
-*/
-
 .flash-card .answer-content{
 pointer-events:auto;
 z-index:5;
 }
-
 .flash-card .done-button{
 pointer-events:auto !important;
 z-index:99999 !important;
 }
-
-
+@media(max-width:900px){
+.cards-grid{
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+.flash-card{
+height:330px;
+}
+}
+@media(max-width:600px){
+.page{padding:25px 5vw 45px;}
+.top-controls{margin-bottom:25px;}
+.cards-grid{grid-template-columns:1fr;gap:18px;}
+.flash-card{height:340px;perspective:none;-webkit-perspective:none;}
+.flash-card:hover{transform:none;}
+.card-inner{position:relative !important;transform:none !important;-webkit-transform:none !important;transform-style:flat !important;-webkit-transform-style:flat !important;transition:none !important;}
+.card-face{position:absolute;inset:0;transform:none !important;-webkit-transform:none !important;backface-visibility:visible !important;-webkit-backface-visibility:visible !important;}
+.card-front{display:block !important;z-index:2;opacity:1 !important;visibility:visible !important;pointer-events:auto;}
+.card-back{display:none !important;z-index:1;opacity:1 !important;visibility:visible !important;pointer-events:none;transform:none !important;-webkit-transform:none !important;}
+.flash-card.mobile-answer .card-inner{transform:none !important;-webkit-transform:none !important;}
+.flash-card.mobile-answer .card-front{display:none !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important;}
+.flash-card.mobile-answer .card-back{display:flex !important;opacity:1 !important;visibility:visible !important;pointer-events:auto !important;transform:none !important;-webkit-transform:none !important;}
+.flash-card.mobile-answer .done-button{pointer-events:auto !important;z-index:99999 !important;}
+.intro{margin-bottom:30px;}
+.flash-card.focused{width:88vw;height:78vh;}
+.flash-card.focused:hover{transform:translate(-50%,-50%) !important;}
+.back-btn,.reset-btn{padding:10px 14px;font-size:11px;}
+}
 /* ========================================
-   END CSS
+   QUESTION ANSWER COVER
 ======================================== */
-
+.answer-cover-wrap{
+position:relative;
+width:100%;
+min-height:170px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-top:15px;
+}
+.answer-hidden{
+width:100%;
+min-height:150px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+.answer-cover{
+position:absolute;
+inset:0;
+z-index:20;
+border:none;
+border-radius:20px;
+background:var(--cream);
+color:var(--green-dark);
+font-family:"Almarai",sans-serif;
+font-size:18px;
+font-weight:800;
+cursor:pointer;
+box-shadow:0 8px 25px rgba(0,0,0,.18);
+transition:transform .5s ease,opacity .4s ease;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+}
+.answer-cover i{
+font-size:15px;
+color:var(--green);
+}
+.answer-cover:hover{
+transform:translateY(4px);
+}
+.answer-cover-wrap.revealed .answer-cover{
+transform:translateY(115%);
+opacity:0;
+pointer-events:none;
+}
+.answer-cover-wrap.revealed .answer-hidden{
+opacity:1;
+}
 </style>
 </head>
 <body>
-
-
-<!-- ========================================
-   BACKGROUND
-======================================== -->
-
 <div class="background-design">
 <div class="polygon p1"></div>
 <div class="polygon p2"></div>
@@ -1182,956 +692,471 @@ z-index:99999 !important;
 <div class="topographic-lines line6"></div>
 <div class="dots-pattern"></div>
 </div>
-
-
-<!-- ========================================
-   OVERLAY
-======================================== -->
-
-<div
-class="focus-overlay"
-id="focusOverlay">
-</div>
-
-
-<!-- ========================================
-   PAGE
-======================================== -->
-
+<div class="focus-overlay" id="focusOverlay"></div>
 <main class="page">
-
-
-<!-- ========================================
-   TOP CONTROLS
-======================================== -->
-
 <div class="top-controls">
-
-<button
-class="back-btn"
-type="button"
-id="backButton">
-
+<button class="back-btn" type="button" id="backButton">
 <i class="fa-solid fa-arrow-right"></i>
-
 العودة للتصنيفات
-
 </button>
-
-
-<button
-class="reset-btn"
-type="button"
-id="resetButton">
-
+<button class="reset-btn" type="button" id="resetButton">
 <i class="fa-solid fa-rotate-right"></i>
-
 إعادة التعيين
-
 </button>
 </div>
-
-
-<!-- ========================================
-   INTRO
-======================================== -->
-
 <section class="intro">
-
 <div class="intro-label">
-
-<i class="fa-solid fa-mountain"></i>فئة</div>
-
-
-<h1>فئة</h1>
-
-
-<p>وصف الفئة </p>
-
+<i class="fa-solid fa-mountain"></i>فئة
+</div>
+<h1>SGC101</h1>
+<p>مجموعة من الأسئلة والمعلومات المتعلقة بالنادي الجيولوجي</p>
 </section>
-
-
-<!-- ========================================
-   CARDS
-======================================== -->
-
 <section class="cards-grid">
-
-
-<!-- ========================================
-   CARD 1
-======================================== -->
-
-<article
-class="flash-card"
-data-index="0">
-
+<article class="flash-card" data-index="0">
 <div class="card-inner">
-
-
 <div class="card-face card-front">
-
-<img
-class="card-image"
-src="#.jpg"alt="">
-
+<img class="card-image" src="#.jpg" alt="">
 <div class="card-overlay"></div>
-
-
 <div class="card-decoration">
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
-
 <div class="front-content">
-
-<div class="card-number">
-01
+<div class="card-number">01</div>
+<h2>تواريخ</h2>
 </div>
-
-<h2>#عنوان البطاقة#</h2>
-
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-
-</div>
-
-
 <div class="card-arrow">
-
 <i class="fa-solid fa-arrow-left"></i>
-
 </div>
-
 </div>
-
-
 <div class="card-face card-back">
-
-<img
-class="back-image"
-src="#.jpg"alt="">
-
+<img class="back-image" src="#.jpg" alt="">
 <div class="back-overlay"></div>
-
-
 <div class="back-decoration">
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
-
 <div class="answer-content">
-
 <div class="answer-icon">
-
 <i class="fa-solid fa-mountain"></i>
-
 </div>
-
-<h3>#عنوان الإجابة#</h3>
-
-<p>#اكتب المحتوى هنا#</p>
-
-
-<button
-type="button"
-class="done-button">
-
-تم
-
+<h3>في أي عام تأسس النادي الجيولوجي؟</h3>
+<div class="answer-cover-wrap">
+<div class="answer-hidden">
+<p>2023</p>
+</div>
+<button type="button" class="answer-cover">
+<i class="fa-solid fa-eye"></i>
+اضغط لكشف الإجابة
 </button>
+</div>
+<button type="button" class="done-button">تم</button>
+<button type="button" class="done-button">تم</button>
 </div>
 </div>
 </div>
 </article>
-
-
-<!-- ========================================
-   CARD 2
-======================================== -->
-
-<article
-class="flash-card"
-data-index="1">
-
+<article class="flash-card" data-index="1">
 <div class="card-inner">
-
-
 <div class="card-face card-front">
-
-<img
-class="card-image"
-src="#.jpg"alt="">
-
+<img class="card-image" src="#.jpg" alt="">
 <div class="card-overlay"></div>
-
 <div class="card-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="front-content">
-
-<div class="card-number">
-02
+<div class="card-number">02</div>
+<h2>تطوير</h2>
 </div>
-
-<h2>#عنوان البطاقة#</h2>
-
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-
-</div>
-
 <div class="card-arrow">
 <i class="fa-solid fa-arrow-left"></i>
 </div>
-
 </div>
-
-
 <div class="card-face card-back">
-
-<img
-class="back-image"
-src="#.jpg"alt="">
-
+<img class="back-image" src="#.jpg" alt="">
 <div class="back-overlay"></div>
-
 <div class="back-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="answer-content">
-
 <div class="answer-icon">
 <i class="fa-solid fa-compass"></i>
 </div>
-
-<h3>#عنوان الإجابة#</h3>
-
-<p>#اكتب المحتوى هنا#</p>
-
-<button
-type="button"
-class="done-button">
-
-تم
-
+<h3>ما اسم الجلسات الأسبوعية التي كان يقيمها النادي؟</h3>
+<div class="answer-cover-wrap">
+<div class="answer-hidden">
+<p>Speaking Center</p>
+</div>
+<button type="button" class="answer-cover">
+<i class="fa-solid fa-eye"></i>
+اضغط لكشف الإجابة
 </button>
+</div>
+<button type="button" class="done-button">تم</button>
+<button type="button" class="done-button">تم</button>
 </div>
 </div>
 </div>
 </article>
-
-
-<!-- ========================================
-   CARD 3
-======================================== -->
-
-<article
-class="flash-card"
-data-index="2">
-
+<article class="flash-card" data-index="2">
 <div class="card-inner">
-
-
 <div class="card-face card-front">
-
-<img
-class="card-image"
-src="#.jpg"alt="">
-
+<img class="card-image" src="#.jpg" alt="">
 <div class="card-overlay"></div>
-
 <div class="card-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="front-content">
-
-<div class="card-number">
-03
+<div class="card-number">03</div>
+<h2>الأكبر</h2>
 </div>
-
-<h2>#عنوان البطاقة#</h2>
-
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-
-</div>
-
 <div class="card-arrow">
 <i class="fa-solid fa-arrow-left"></i>
 </div>
-
 </div>
-
-
 <div class="card-face card-back">
-
-<img
-class="back-image"
-src="#.jpg"alt="">
-
+<img class="back-image" src="#.jpg" alt="">
 <div class="back-overlay"></div>
-
 <div class="back-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="answer-content">
-
 <div class="answer-icon">
 <i class="fa-solid fa-map"></i>
 </div>
-
-<h3>#عنوان الإجابة#</h3>
-
-<p>#اكتب المحتوى هنا#</p>
-
-<button
-type="button"
-class="done-button">
-
-تم
-
-</button>
+<h3>تُعد فعالية Students’ Symposium أكبر فعالية أكاديمية خلال العام.</h3>
+<button type="button" class="done-button">تم</button>
 </div>
 </div>
 </div>
 </article>
-
-
-<!-- ========================================
-   CARD 4
-======================================== -->
-
-<article
-class="flash-card"
-data-index="3">
-
+<article class="flash-card" data-index="3">
 <div class="card-inner">
-
-
 <div class="card-face card-front">
-
-<img
-class="card-image"
-src="#.jpg"alt="">
-
+<img class="card-image" src="#.jpg" alt="">
 <div class="card-overlay"></div>
-
 <div class="card-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="front-content">
-
-<div class="card-number">
-04
+<div class="card-number">04</div>
+<h2>الذاكرة</h2>
 </div>
-
-<h2>#عنوان البطاقة#</h2>
-
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-
-</div>
-
 <div class="card-arrow">
 <i class="fa-solid fa-arrow-left"></i>
 </div>
-
 </div>
-
-
 <div class="card-face card-back">
-
-<img
-class="back-image"
-src="#.jpg"alt="">
-
+<img class="back-image" src="#.jpg" alt="">
 <div class="back-overlay"></div>
-
 <div class="back-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="answer-content">
-
 <div class="answer-icon">
 <i class="fa-solid fa-person-hiking"></i>
 </div>
-
-<h3>#عنوان الإجابة#</h3>
-
-<p>#اكتب المحتوى هنا#</p>
-
-<button
-type="button"
-class="done-button">
-
-تم
-
-</button>
+<h3>إجابة مفتوحة</h3>
+<button type="button" class="done-button">تم</button>
 </div>
 </div>
 </div>
 </article>
-
-
-<!-- ========================================
-   CARD 5
-======================================== -->
-
-<article
-class="flash-card"
-data-index="4">
-
+<article class="flash-card" data-index="4">
 <div class="card-inner">
-
-
 <div class="card-face card-front">
-
-<img
-class="card-image"
-src="#.jpg"alt="">
-
+<img class="card-image" src="#.jpg" alt="">
 <div class="card-overlay"></div>
-
 <div class="card-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="front-content">
-
-<div class="card-number">
-05
+<div class="card-number">05</div>
+<h2>عدد</h2>
 </div>
-
-<h2>#عنوان البطاقة#</h2>
-
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-
-</div>
-
 <div class="card-arrow">
 <i class="fa-solid fa-arrow-left"></i>
 </div>
-
 </div>
-
-
 <div class="card-face card-back">
-
-<img
-class="back-image"
-src="#.jpg"alt="">
-
+<img class="back-image" src="nov calendar.png" alt="">
 <div class="back-overlay"></div>
-
 <div class="back-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="answer-content">
-
 <div class="answer-icon">
 <i class="fa-solid fa-route"></i>
 </div>
-
-<h3>#عنوان الإجابة#</h3>
-
-<p>#اكتب المحتوى هنا#</p>
-
-<button
-type="button"
-class="done-button">
-
-تم
-
-</button>
+<h3>اقام النادي الجيولوجي ما يزيد عن ال 20 ورشه عمل في العام الدراسي 2025-2026</h3>
+<button type="button" class="done-button">تم</button>
 </div>
 </div>
 </div>
 </article>
-
-
-<!-- ========================================
-   CARD 6
-======================================== -->
-
-<article
-class="flash-card"
-data-index="5">
-
+<article class="flash-card" data-index="5">
 <div class="card-inner">
-
-
 <div class="card-face card-front">
-
-<img
-class="card-image"
-src="#.jpg"alt="">
-
+<img class="card-image" src="#.jpg" alt="">
 <div class="card-overlay"></div>
-
 <div class="card-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="front-content">
-
-<div class="card-number">
-06
+<div class="card-number">06</div>
+<h2>مناسبات</h2>
 </div>
-
-<h2>#عنوان البطاقة#</h2>
-
-<p>#اكتب وصفًا قصيرًا هنا#</p>
-
-</div>
-
 <div class="card-arrow">
 <i class="fa-solid fa-arrow-left"></i>
 </div>
-
 </div>
-
-
 <div class="card-face card-back">
-
-<img
-class="back-image"
-src="#.jpg"alt="">
-
+<img class="back-image" src="#.jpg" alt="">
 <div class="back-overlay"></div>
-
 <div class="back-decoration">
-
 <div class="geo-line one"></div>
 <div class="geo-line two"></div>
 <div class="geo-line three"></div>
 <div class="geo-line four"></div>
 <div class="geo-line five"></div>
-
 </div>
-
 <div class="answer-content">
-
 <div class="answer-icon">
 <i class="fa-solid fa-location-dot"></i>
 </div>
-
-<h3>#عنوان الإجابة#</h3>
-
-<p>#اكتب المحتوى هنا#</p>
-
-<button
-type="button"
-class="done-button">
-
-تم
-
+<h3>ما المناسبة الاجتماعية التي أُقيمت خلال شهر رمضان؟</h3>
+<div class="answer-cover-wrap">
+<div class="answer-hidden">
+<p>الأمسية الرمضانية</p>
+</div>
+<button type="button" class="answer-cover">
+<i class="fa-solid fa-eye"></i>
+اضغط لكشف الإجابة
 </button>
+</div>
+<button type="button" class="done-button">تم</button>
+<button type="button" class="done-button">تم</button>
 </div>
 </div>
 </div>
 </article>
-
-
 </section>
 </main>
-
-
 <!-- ========================================
-   JAVASCRIPT
+JAVASCRIPT
 ======================================== -->
-
 <script>
-
-/* ========================================
-   VARIABLES
-======================================== */
-
-const cards =
-document.querySelectorAll(".flash-card");
-
-const doneButtons =
-document.querySelectorAll(".done-button");
-
-const overlay =
-document.getElementById("focusOverlay");
-
-const resetButton =
-document.getElementById("resetButton");
-
-const backButton =
-document.getElementById("backButton");
-
-const STORAGE_KEY = "cards3CompletedCards";;
-
-let completedCards =
-JSON.parse(
-localStorage.getItem(STORAGE_KEY)
-) || [];
-
-
-/* ========================================
-   OPEN CARD
-======================================== */
-
+const STORAGE_KEY="cards3CompletedCards";
+const STATE_KEY="cards3State";
+const cards=[...document.querySelectorAll(".flash-card")];
+let completedCards=JSON.parse(localStorage.getItem(STORAGE_KEY))||[];
+let savedState=JSON.parse(localStorage.getItem(STATE_KEY))||{};
+function isMobile(){
+return window.innerWidth<=600;
+}
+function saveCardState(card){
+const index=Number(card.dataset.index);
+savedState[index]={
+flipped:card.classList.contains("flipped"),
+mobileAnswer:card.classList.contains("mobile-answer"),
+completed:card.classList.contains("completed"),
+revealed:[...card.querySelectorAll(".answer-cover-wrap")].map(function(wrap){
+return wrap.classList.contains("revealed");
+}),
+questionRevealed:[...card.querySelectorAll(".question-second-cover")].map(function(wrap){
+return wrap.classList.contains("revealed");
+}),
+covers:[...card.querySelectorAll(".answer-cover")].map(function(cover){
+return cover.classList.contains("revealed");
+})
+};
+localStorage.setItem(STATE_KEY,JSON.stringify(savedState));
+}
 function openCard(card){
-
-if(!card){
-return;
-}
-
-if(
-card.classList.contains("completed")
-){
-return;
-}
-
-if(
-card.classList.contains("focused")
-){
-return;
-}
-
-
-/*
-   نقلب البطاقة
-*/
-
-card.classList.add("flipped");
-
-
-/*
-   بعدها نكبرها
-*/
-
+if(card.classList.contains("completed"))return;
+if(card.classList.contains("focused"))return;
+if(isMobile()){
+card.classList.add("mobile-answer");
+saveCardState(card);
 setTimeout(function(){
-
-if(
-card.classList.contains("completed")
-){
+card.classList.add("focused");
+document.querySelector(".focus-overlay").classList.add("active");
+document.body.style.overflow="hidden";
+},100);
 return;
 }
-
+card.classList.add("flipped");
+saveCardState(card);
+setTimeout(function(){
 card.classList.add("focused");
-overlay.classList.add("active");
+document.querySelector(".focus-overlay").classList.add("active");
 document.body.style.overflow="hidden";
 },100);
 }
-
-
-/* ========================================
-   COMPLETE CARD
-======================================== */
-
 function completeCard(card){
-
-if(!card){
-return;
-}
-
-if(
-card.classList.contains("completed")
-){
-return;
-}
-
-const index =
-Number(card.dataset.index);
-
-if(
-completedCards.includes(index)
-){
-return;
-}
-
-/*
-   حفظ البطاقة
-*/
-
+if(!card)return;
+if(card.classList.contains("completed"))return;
+const index=Number(card.dataset.index);
+if(!completedCards.includes(index)){
 completedCards.push(index);
-localStorage.setItem(
-STORAGE_KEY,
-JSON.stringify(completedCards)
-);
-
-
-/*
-   مهم جدًا:
-   نشيل focused فقط.
-
-   لا نشيل flipped.
-*/
-
+}
+localStorage.setItem(STORAGE_KEY,JSON.stringify(completedCards));
 card.classList.remove("focused");
-overlay.classList.remove("active");
+document.querySelector(".focus-overlay").classList.remove("active");
 document.body.style.overflow="";
-
-
-/*
-   نخلي البطاقة مكتملة
-   بعد انتهاء حركة الرجوع.
-*/
-
 setTimeout(function(){
 card.classList.add("completed");
+saveCardState(card);
 },450);
 }
-
-
-/* ========================================
-   CARD CLICK
-======================================== */
-
 cards.forEach(function(card){
-
-card.addEventListener(
-"click",
-function(event){
-
-/*
-   إذا الزر هو مصدر الضغط
-   لا نفتح البطاقة.
-*/
-
-if(
-event.target.closest(".done-button")
-){
-return;
-}
-
+card.addEventListener("click",function(event){
+if(event.target.closest(".done-button"))return;
+if(event.target.closest(".answer-cover"))return;
 openCard(card);
-},
-false
-);
 });
-
-
-/* ========================================
-   DONE BUTTON
-======================================== */
-
-/*
-   نستخدم CAPTURE PHASE
-   بدل الاعتماد على onclick.
-
-   هذا يجعل زر تم يأخذ الأولوية
-   قبل حدث البطاقة.
-*/
-
-document.addEventListener(
-"click",
-function(event){
-const button =
-event.target.closest(".done-button");
-if(!button){
-return;
-}
-
-
-/*
-   نوقف أي حدث آخر
-*/
-
+});
+document.addEventListener("click",function(event){
+const doneButton=event.target.closest(".done-button");
+if(!doneButton)return;
 event.preventDefault();
-event.stopPropagation();
 event.stopImmediatePropagation();
-
-
-/*
-   نجيب البطاقة
-*/
-
-const card =
-button.closest(".flash-card");
-
-if(!card){
-return;
-}
-
-/*
-   نفذ تم
-*/
-
+const card=doneButton.closest(".flash-card");
+if(card){
 completeCard(card);
-},
-true
-);
-
-
-/* ========================================
-   TOUCH / POINTER SAFETY
-======================================== */
-
-document.addEventListener(
-"pointerdown",
-function(event){
-const button =
-event.target.closest(".done-button");
-
-if(!button){
-return;
 }
-
-event.stopPropagation();
-},
-true
-);
-
-
-/* ========================================
-   RESET
-======================================== */
-
+},true);
+document.addEventListener("click",function(event){
+const answerCover=event.target.closest(".answer-cover");
+if(!answerCover)return;
+event.preventDefault();
+event.stopImmediatePropagation();
+if(answerCover.classList.contains("revealed"))return;
+const wrap=answerCover.closest(".answer-cover-wrap");
+const questionSecond=answerCover.closest(".question-second-cover");
+if(wrap){
+wrap.classList.add("revealed");
+}
+if(questionSecond&&answerCover.classList.contains("question-cover")){
+questionSecond.classList.add("revealed");
+}
+answerCover.classList.add("revealed");
+const card=answerCover.closest(".flash-card");
+if(card){
+saveCardState(card);
+}
+},true);
 function resetCards(){
+localStorage.removeItem(STORAGE_KEY);
+localStorage.removeItem(STATE_KEY);
 completedCards=[];
-localStorage.removeItem(
-STORAGE_KEY
-);
-
-
+savedState={};
 cards.forEach(function(card){
-card.classList.remove(
-"completed",
-"focused",
-"flipped"
-);
+card.classList.remove("completed","focused","flipped","mobile-answer");
+card.querySelectorAll(".answer-cover-wrap").forEach(function(wrap){
+wrap.classList.remove("revealed");
 });
-
-overlay.classList.remove("active");
+card.querySelectorAll(".question-second-cover").forEach(function(wrap){
+wrap.classList.remove("revealed");
+});
+card.querySelectorAll(".answer-cover").forEach(function(cover){
+cover.classList.remove("revealed");
+});
+});
+document.querySelector(".focus-overlay").classList.remove("active");
 document.body.style.overflow="";
 }
-
-
-/* ========================================
-   BACK
-======================================== */
-
 function goBack(){
 window.location.href="../index.html";
 }
-
-
-/* ========================================
-   BUTTONS
-======================================== */
-
-resetButton.addEventListener(
-"click",
-function(event){
-event.preventDefault();
-event.stopPropagation();
-resetCards();
-}
-);
-
-
-backButton.addEventListener(
-"click",
-function(event){
-event.preventDefault();
-event.stopPropagation();
-goBack();
-}
-);
-
-
-/* ========================================
-   RESTORE COMPLETED
-======================================== */
-
-function restoreCompletedCards(){
+function restoreCardStates(){
 cards.forEach(function(card){
-const index =
-Number(card.dataset.index);
-
-if(
-completedCards.includes(index)
-){
-
-/*
-   البطاقة المكتملة تظهر
-   على جهة الإجابة.
-*/
-
+const index=Number(card.dataset.index);
+const state=savedState[index];
+if(state){
+if(state.flipped){
 card.classList.add("flipped");
-card.classList.add("completed");
+}
+if(state.mobileAnswer){
+card.classList.add("mobile-answer");
+}
+card.querySelectorAll(".answer-cover-wrap").forEach(function(wrap,i){
+if(state.revealed&&state.revealed[i]){
+wrap.classList.add("revealed");
+}
+});
+card.querySelectorAll(".question-second-cover").forEach(function(wrap,i){
+if(state.questionRevealed&&state.questionRevealed[i]){
+wrap.classList.add("revealed");
+}
+});
+card.querySelectorAll(".answer-cover").forEach(function(cover,i){
+if(state.covers&&state.covers[i]){
+cover.classList.add("revealed");
 }
 });
 }
-
-
-/* ========================================
-   INITIALIZE
-======================================== */
-
-restoreCompletedCards();
+if(completedCards.includes(index)){
+card.classList.add("completed");
+if(isMobile()){
+card.classList.add("mobile-answer");
+}else{
+card.classList.add("flipped");
+}
+}
+});
+}
+const backButton=document.querySelector(".back-btn");
+const resetButton=document.querySelector(".reset-btn");
+if(backButton){
+backButton.addEventListener("click",goBack);
+}
+if(resetButton){
+resetButton.addEventListener("click",resetCards);
+}
+restoreCardStates();
 </script>
 </body>
 </html>

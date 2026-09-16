@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>منجم | اكتشف .. تعلم .. استكشف</title>
+<title>SGC: The Geologists Connect</title>
 
 <style>
 
@@ -690,16 +690,15 @@ transition:none!important;
 
 <div class="intro-label">
 <i class="fa-solid fa-layer-group"></i>
-مساحة المعرفة 
+اللقاء الترحيبي للنادي الجيولوجي السعودي
 </div>
 
 <h1>
-اكتشف .. تعلم .. <span>استكشف</span>
+SGC : The GC <br><span>Where Geologists Connect</span></br>
 </h1>
 
 <p>
-اختر المجال ....
-</p>
+اختر المجال ثم عرفنا عن نفسك </p>
 
 </section>
 
@@ -712,7 +711,7 @@ transition:none!important;
 <!-- CATEGORY 1 -->
 
 <article class="category-card card-1"
-data-category="شيء من هنا"
+data-category="GeoZone"
 onclick="selectCategory(this)">
 <div class="card-image"></div>
 <div class="card-cover"></div>
@@ -722,9 +721,9 @@ onclick="selectCategory(this)">
 <i class="fa-solid fa-mountain"></i>
 </div>
 
-<h2>شيء من هنا</h2>
+<h2>GeoZone</h2>
 
-<p>استكشف أساسيات وعلوم الأرض</p>
+<p>معلومات جيولوجية من الحياة اليومية</p>
 
 </div>
 
@@ -738,7 +737,7 @@ onclick="selectCategory(this)">
 <!-- CATEGORY 2 -->
 
 <article class="category-card card-2"
-data-category="أشياء من هناك"
+data-category="معلومات عامة"
 onclick="selectCategory(this)">
 <div class="card-image"></div>
 <div class="card-cover"></div>
@@ -748,9 +747,9 @@ onclick="selectCategory(this)">
 <i class="fa-solid fa-compass"></i>
 </div>
 
-<h2>أشياء من هناك</h2>
+<h2>معلومات عامة</h2>
 
-<p>#</p>
+<p>معلومات عامة في جميع المجالات</p>
 
 </div>
 
@@ -776,7 +775,7 @@ onclick="selectCategory(this)">
 
 <h2>SGC 101</h2>
 
-<p>#</p>
+<p>مجموعة من الأسئلة متعلقة بالنادي الجيولوجي</p>
 
 </div>
 
@@ -790,7 +789,7 @@ onclick="selectCategory(this)">
 <!-- CATEGORY 4 -->
 
 <article class="category-card card-4"
-data-category="خارج الإطار"
+data-category="ما الرابط"
 onclick="selectCategory(this)">
 
 <div class="card-image"></div>
@@ -801,9 +800,9 @@ onclick="selectCategory(this)">
 <i class="fa-solid fa-lightbulb"></i>
 </div>
 
-<h2>خارج الإطار</h2>
+<h2>ما الرابط</h2>
 
-<p>#</p>
+<p>حدد ما هو الشيء المشترك بين الكلمات </p>
 
 </div>
 
@@ -817,7 +816,7 @@ onclick="selectCategory(this)">
 <!-- CATEGORY 5 -->
 
 <article class="category-card card-5"
-data-category="بين خيارين"
+data-category="عكس الجواب"
 onclick="selectCategory(this)">
 <div class="card-image"></div>
 <div class="card-cover"></div>
@@ -827,9 +826,9 @@ onclick="selectCategory(this)">
 <i class="fa-solid fa-earth-americas"></i>
 </div>
 
-<h2>بين خيارين</h2>
+<h2>عكس الجواب</h2>
 
-<p>#</p>
+<p>المعطى هو الإجابة والمطلوب هو صنع السؤال ! </p>
 
 </div>
 
@@ -842,7 +841,7 @@ onclick="selectCategory(this)">
 <!-- CATEGORY 6 -->
 
 <article class="category-card card-6"
-data-category="جرب حظك"
+data-category="تحدي الصور"
 onclick="selectCategory(this)">
 <div class="card-image"></div>
 <div class="card-cover"></div>
@@ -853,9 +852,9 @@ onclick="selectCategory(this)">
 <i class="fa-solid fa-people-group"></i>
 </div>
 
-<h2>جرب حظك</h2>
+<h2>تحدي الصور</h2>
 
-<p>#</p>
+<p>تركيب كلمات من خلال الصور للوصول الى اسم صخر او معدن</p>
 
 </div>
 
@@ -883,11 +882,11 @@ let category=card.getAttribute("data-category");
 
 sessionStorage.setItem("selectedCategory",category);
 
-if(category==="شيء من هنا"){
+if(category==="GeoZone"){
 window.location.href="CARDS/CARDS1.html";
 }
 
-if(category==="أشياء من هناك"){
+if(category==="معلومات عامة"){
 window.location.href="CARDS/CARDS2.html";
 }
 
@@ -895,15 +894,15 @@ if(category==="SGC 101"){
 window.location.href="CARDS/CARDS3.html";
 }
 
-if(category==="خارج الإطار"){
+if(category==="ما الرابط"){
 window.location.href="CARDS/CARDS4.html";
 }
 
-if(category==="بين خيارين"){
+if(category==="عكس الجواب"){
 window.location.href="CARDS/CARDS5.html";
 }
 
-if(category==="جرب حظك"){
+if(category==="تحدي الصور"){
 window.location.href="CARDS/CARDS6.html";
 }
 }
