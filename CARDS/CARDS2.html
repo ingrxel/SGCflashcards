@@ -676,6 +676,80 @@ pointer-events:none;
 .answer-cover-wrap.revealed .answer-hidden{
 opacity:1;
 }
+.video-button{
+position:absolute;
+bottom:78px;
+left:50%;
+transform:translateX(-50%);
+z-index:99999;
+border:none;
+border-radius:50px;
+padding:11px 24px;
+background:var(--gold);
+color:var(--green-dark);
+font-family:"Almarai",sans-serif;
+font-size:12px;
+font-weight:800;
+cursor:pointer;
+box-shadow:0 8px 25px rgba(0,0,0,.18);
+}
+.video-modal{
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+z-index:999999;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(7,28,21,.72);
+backdrop-filter:blur(6px);
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+transition:opacity .3s ease,visibility .3s ease;
+}
+.video-modal.active{
+opacity:1;
+visibility:visible;
+pointer-events:auto;
+}
+.video-box{
+position:relative;
+width:min(850px,90vw);
+max-height:85vh;
+background:var(--cream);
+border-radius:24px;
+padding:15px;
+box-shadow:0 30px 80px rgba(0,0,0,.45);
+z-index:1000000;
+}
+.video-box video{
+display:block;
+width:100%;
+height:auto;
+max-height:80vh;
+border-radius:16px;
+background:#000;
+}
+.video-close{
+position:absolute;
+top:-14px;
+left:-14px;
+width:40px;
+height:40px;
+border:none;
+border-radius:50%;
+background:white;
+color:var(--green-dark);
+font-size:20px;
+font-weight:800;
+cursor:pointer;
+z-index:1000001;
+box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
 </style>
 </head>
 <body>
@@ -815,6 +889,8 @@ opacity:1;
 <article class="flash-card" data-index="2">
 <div class="card-inner">
 <div class="card-face card-front">
+
+
  <img class="card-image" src="../IMG/CARDS2/THREE.png">
 <div class="card-overlay"></div>
 <div class="card-decoration">
@@ -865,7 +941,7 @@ opacity:1;
 <article class="flash-card" data-index="3">
 <div class="card-inner">
 <div class="card-face card-front">
- <img class="card-image" src="../IMG/CARDS2/FOUR.png">
+<img class="card-image" src="../IMG/CARDS2/FOUR.png">
 <div class="card-overlay"></div>
 <div class="card-decoration">
 <div class="geo-line one"></div>
@@ -883,7 +959,6 @@ opacity:1;
 </div>
 </div>
 <div class="card-face card-back">
- 
 <div class="back-overlay"></div>
 <div class="back-decoration">
 <div class="geo-line one"></div>
@@ -897,6 +972,10 @@ opacity:1;
 <i class="fa-solid fa-person-hiking"></i>
 </div>
 <h3>سيلبو غوميرو هي طريقة تواصل بالصفير اشتهرت في جزيرة لا غوميرا الإسبانية.</h3>
+<button type="button" class="video-button" id="openVideo">
+<i class="fa-solid fa-play"></i>
+BOUNS
+</button>
 <button type="button" class="done-button">تم</button>
 </div>
 </div>
@@ -942,6 +1021,7 @@ opacity:1;
 </div>
 </div>
 </article>
+
 <article class="flash-card" data-index="5">
 <div class="card-inner">
 <div class="card-face card-front">
@@ -994,6 +1074,14 @@ opacity:1;
 </article>
 </section>
 </main>
+<div class="video-modal" id="videoModal">
+<div class="video-box">
+<button type="button" class="video-close" id="closeVideo">×</button>
+<video id="clubVideo" controls>
+<source src="../IMG/CARDS2/TLK.mp4" type="video/mp4">
+</video>
+</div>
+</div>
 <!-- ========================================
 JAVASCRIPT
 ======================================== -->
@@ -1032,7 +1120,8 @@ card.classList.add("mobile-answer");
 saveCardState(card);
 setTimeout(function(){
 card.classList.add("focused");
-document.querySelector(".focus-overlay").classList.add("active");
+const overlay=document.querySelector(".focus-overlay");
+if(overlay)overlay.classList.add("active");
 document.body.style.overflow="hidden";
 },100);
 return;
@@ -1041,7 +1130,8 @@ card.classList.add("flipped");
 saveCardState(card);
 setTimeout(function(){
 card.classList.add("focused");
-document.querySelector(".focus-overlay").classList.add("active");
+const overlay=document.querySelector(".focus-overlay");
+if(overlay)overlay.classList.add("active");
 document.body.style.overflow="hidden";
 },100);
 }
@@ -1054,7 +1144,8 @@ completedCards.push(index);
 }
 localStorage.setItem(STORAGE_KEY,JSON.stringify(completedCards));
 card.classList.remove("focused");
-document.querySelector(".focus-overlay").classList.remove("active");
+const overlay=document.querySelector(".focus-overlay");
+if(overlay)overlay.classList.remove("active");
 document.body.style.overflow="";
 setTimeout(function(){
 card.classList.add("completed");
@@ -1065,6 +1156,7 @@ cards.forEach(function(card){
 card.addEventListener("click",function(event){
 if(event.target.closest(".done-button"))return;
 if(event.target.closest(".answer-cover"))return;
+if(event.target.closest(".video-button"))return;
 openCard(card);
 });
 });
@@ -1074,9 +1166,7 @@ if(!doneButton)return;
 event.preventDefault();
 event.stopImmediatePropagation();
 const card=doneButton.closest(".flash-card");
-if(card){
-completeCard(card);
-}
+if(card)completeCard(card);
 },true);
 document.addEventListener("click",function(event){
 const answerCover=event.target.closest(".answer-cover");
@@ -1094,9 +1184,7 @@ questionSecond.classList.add("revealed");
 }
 answerCover.classList.add("revealed");
 const card=answerCover.closest(".flash-card");
-if(card){
-saveCardState(card);
-}
+if(card)saveCardState(card);
 },true);
 function resetCards(){
 localStorage.removeItem(STORAGE_KEY);
@@ -1115,8 +1203,10 @@ card.querySelectorAll(".answer-cover").forEach(function(cover){
 cover.classList.remove("revealed");
 });
 });
-document.querySelector(".focus-overlay").classList.remove("active");
+const overlay=document.querySelector(".focus-overlay");
+if(overlay)overlay.classList.remove("active");
 document.body.style.overflow="";
+closeVideoModal();
 }
 function goBack(){
 window.location.href="../index.html";
@@ -1166,6 +1256,47 @@ backButton.addEventListener("click",goBack);
 if(resetButton){
 resetButton.addEventListener("click",resetCards);
 }
+const openVideo=document.getElementById("openVideo");
+const closeVideo=document.getElementById("closeVideo");
+const videoModal=document.getElementById("videoModal");
+const clubVideo=document.getElementById("clubVideo");
+function closeVideoModal(){
+if(videoModal)videoModal.classList.remove("active");
+if(clubVideo){
+clubVideo.pause();
+clubVideo.currentTime=0;
+}
+}
+if(openVideo&&videoModal&&clubVideo){
+openVideo.addEventListener("click",function(event){
+event.preventDefault();
+event.stopPropagation();
+videoModal.classList.add("active");
+const playPromise=clubVideo.play();
+if(playPromise!==undefined){
+playPromise.catch(function(){});
+}
+});
+}
+if(closeVideo){
+closeVideo.addEventListener("click",function(event){
+event.preventDefault();
+event.stopPropagation();
+closeVideoModal();
+});
+}
+if(videoModal){
+videoModal.addEventListener("click",function(event){
+if(event.target===videoModal){
+closeVideoModal();
+}
+});
+}
+document.addEventListener("keydown",function(event){
+if(event.key==="Escape"){
+closeVideoModal();
+}
+});
 restoreCardStates();
 </script>
 </body>
